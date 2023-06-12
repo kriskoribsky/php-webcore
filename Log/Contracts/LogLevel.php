@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Core\Contracts\Log;
+namespace Core\Log\Contracts;
 
 use Psr\Log\LogLevel as PsrLogLevel;
 
 /**
- * Framework specific version of PSR-3: Logger Interface's LogLevel 
+ * Framework specific version of PSR-3: Logger Interface's LogLevel.
  */
 enum LogLevel: int
 {
@@ -59,6 +59,11 @@ enum LogLevel: int
      */
     case DEBUG = 100;
 
+    /**
+     * Create using name.
+     * 
+     * @throws \UnhandledMatchError if name not one of the eight RFC 5424 levels
+     */
     public static function fromName(string $name): self
     {
         return match ($name) {
@@ -73,6 +78,11 @@ enum LogLevel: int
         };
     }
 
+    /**
+     * Create using number.
+     * 
+     * @throws \UnhandledMatchError if value not one of this implementation's values
+     */
     public static function fromValue(int $value): self
     {
         return self::from($value);

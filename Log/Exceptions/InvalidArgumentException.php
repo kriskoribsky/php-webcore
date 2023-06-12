@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Core\Contracts\Log;
+namespace Core\Log\Exceptions;
 
 use Psr\Log\InvalidArgumentException as PsrInvalidArgumentException;
 
