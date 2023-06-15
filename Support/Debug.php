@@ -6,28 +6,28 @@ class Debug
     {
     }
 
-    public static function print(mixed...$vars): void
+    public static function print(mixed ...$vars): void
     {
         foreach ($vars as $var) {
-            self::output_var((is_object($var) || is_array($var)) ? 'print_r' : 'var_dump', $var);
+            self::output_var(is_object($var) || is_array($var) ? 'print_r' : 'var_dump', $var);
         }
     }
 
-    public static function dump(mixed...$vars): void
+    public static function dump(mixed ...$vars): void
     {
         foreach ($vars as $var) {
             self::output_var('var_dump', $var);
         }
     }
 
-    public static function print_exit(mixed...$vars): void
+    public static function print_exit(mixed ...$vars): void
     {
         self::print(...$vars);
         self::output_exit(__METHOD__);
         exit();
     }
 
-    public static function dump_exit(mixed...$vars): void
+    public static function dump_exit(mixed ...$vars): void
     {
         self::dump(...$vars);
         self::output_exit(__METHOD__);
@@ -48,7 +48,7 @@ class Debug
 
         echo <<<HTML
         </fieldset>
-        </pre>  
+        </pre>
         HTML;
     }
 
@@ -65,7 +65,7 @@ class Debug
         echo <<<HTML
         </div>
         <strong>Execution explicitly terminated using <em>$method</em> method.</strong>
-        </pre>  
+        </pre>
         HTML;
     }
 }

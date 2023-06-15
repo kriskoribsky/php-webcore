@@ -5,16 +5,16 @@ namespace Core\Log\Contracts\Processors;
 use Core\Log\Contracts\LogRecord;
 
 /**
- * Interface that all Processors must implement. 
+ * Interface that all Processors must implement.
  */
 interface Processor
 {
     /**
      * Process a record.
-     * 
+     *
      * Processing a record means adding additional data
      * to the extra' context of the record.
-     * 
+     *
      * @param LogRecord $record the record to process
      * @return LogRecord processed record
      */
@@ -22,7 +22,7 @@ interface Processor
 
     /**
      * Processes a set of records at once.
-     * 
+     *
      * @param LogRecord $records records to handle
      * @return array<LogRecord> processed records
      */

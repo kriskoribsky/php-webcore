@@ -8,7 +8,9 @@ use App\Exceptions\BaseException;
 use App\Interfaces\ExceptionInterface;
 use Psr\Container\ContainerExceptionInterface;
 
-class ContainerResolveDependencyException extends BaseException implements ExceptionInterface, ContainerExceptionInterface
+class ContainerResolveDependencyException extends BaseException implements
+    ExceptionInterface,
+    ContainerExceptionInterface
 {
     public function __construct(
         string $message = 'Error trying to resolve item dependencies',

@@ -39,30 +39,22 @@ class Container implements ContainerInterface
     public function bind(string $id, \Closure|string $concrete): void
     {
         if ($concrete instanceof \Closure) {
-            $this->set(
-                new ContainerItem($id, $concrete, ContainerItemType::BIND)
-            );
+            $this->set(new ContainerItem($id, $concrete, ContainerItemType::BIND));
         }
         // TODO: refactor interfaces & this method
         else {
-            $this->set(
-                new ContainerItem($id, null, ContainerItemType::INTERFACE , $concrete)
-            );
+            $this->set(new ContainerItem($id, null, ContainerItemType::INTERFACE, $concrete));
         }
     }
 
     public function singleton(string $id, \Closure $concrete): void
     {
-        $this->set(
-            new ContainerItem($id, $concrete, ContainerItemType::SINGLETON)
-        );
+        $this->set(new ContainerItem($id, $concrete, ContainerItemType::SINGLETON));
     }
 
     public function instance(string $id, mixed $instance): void
     {
-        $this->set(
-            new ContainerItem($id, null, ContainerItemType::INSTANCE, $instance)
-        );
+        $this->set(new ContainerItem($id, null, ContainerItemType::INSTANCE, $instance));
     }
 
     private function set(ContainerItem $item): void
@@ -81,18 +73,16 @@ class Container implements ContainerInterface
             throw new ContainerResolveException("Class $id is not instantiable.");
         }
 
-
         // 2. Inspect the constructor of the class
         $class_constructor = $class_reflection->getConstructor();
         if ($class_constructor === null) {
-            return new $id;
+            return new $id();
         }
-
 
         // 3. Inspect the constructor parameters (dependencies)
         $parameters = $class_constructor->getParameters();
         if ($parameters === null) {
-            return new $id;
+            return new $id();
         }
 
         // 4. Try to resolve class dependencies
@@ -108,17 +98,22 @@ class Container implements ContainerInterface
             $name = $dep->getName();
             $type = $dep->getType();
 
-
             if ($type === null) {
-                throw new ContainerResolveDependencyException("Parameter $name of class $class_name doesn't have a type.");
+                throw new ContainerResolveDependencyException(
+                    "Parameter $name of class $class_name doesn't have a type.",
+                );
             }
 
             if ($type instanceof \ReflectionUnionType || $type instanceof \ReflectionIntersectionType) {
-                throw new ContainerResolveDependencyException("Parameter $name of class $class_name is union/intersection of multiple types.");
+                throw new ContainerResolveDependencyException(
+                    "Parameter $name of class $class_name is union/intersection of multiple types.",
+                );
             }
 
             if ($type->isBuiltin()) {
-                throw new ContainerResolveDependencyException("Parameter $name of class $class_name is of builtin type.");
+                throw new ContainerResolveDependencyException(
+                    "Parameter $name of class $class_name is of builtin type.",
+                );
             }
 
             if ($type instanceof \ReflectionNamedType) {
@@ -126,7 +121,6 @@ class Container implements ContainerInterface
             }
 
             throw new ContainerResolveDependencyException("Parameter $name of class $class_name is invalid.");
-
         }, $dependencies);
     }
 }
@@ -137,7 +131,7 @@ class ContainerItem
         private string $id,
         private \Closure|null $concrete,
         private ContainerItemType $type,
-        private mixed $instance = null
+        private mixed $instance = null,
     ) {
         if ($concrete === null && $type !== ContainerItemType::INSTANCE) {
             throw new ContainerItemClosureException("Closure of item '$id' with type '{$type->name}' is null");
@@ -161,28 +155,34 @@ class ContainerItem
                 return $this->valid_instance(($this->concrete)($c));
 
             case ContainerItemType::SINGLETON:
-                return $this->valid_instance($this->instance ?? $this->instance = ($this->concrete)($c));
+                return $this->valid_instance($this->instance ?? ($this->instance = ($this->concrete)($c)));
 
             case ContainerItemType::INSTANCE:
                 return $this->valid_instance($this->instance);
 
             default:
-                throw new ContainerItemTypeException("Item '$this->id' of type '{$this->type->name}' is not instantiable");
+                throw new ContainerItemTypeException(
+                    "Item '$this->id' of type '{$this->type->name}' is not instantiable",
+                );
         }
     }
 
     public function get_class(): string
     {
-        if (is_string($this->instance) && $this->type === ContainerItemType::INTERFACE ) {
+        if (is_string($this->instance) && $this->type === ContainerItemType::INTERFACE) {
             return $this->instance;
         }
-        throw new ContainerItemTypeException("Item '$this->id' of type '{$this->type->name}' doesn't have a class name");
+        throw new ContainerItemTypeException(
+            "Item '$this->id' of type '{$this->type->name}' doesn't have a class name",
+        );
     }
 
     private function valid_instance(mixed $instance): mixed
     {
         if ($instance === null) {
-            throw new ContainerItemInstanceException("Item instance of '$this->id' of type '{$this->type->name}' is null");
+            throw new ContainerItemInstanceException(
+                "Item instance of '$this->id' of type '{$this->type->name}' is null",
+            );
         }
 
         return $instance;

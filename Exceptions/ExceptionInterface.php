@@ -11,7 +11,7 @@ interface ExceptionInterface extends \Throwable
         string $message,
         HttpStatus $http,
         InternalStatus $interal,
-        ExceptionInterface $previous = null
+        ExceptionInterface $previous = null,
     );
     public function getHttpStatus(): HttpStatus;
     public function getInternalStatus(): InternalStatus;

@@ -11,10 +11,10 @@ interface Formatter
 {
     /**
      * Formats a log record.
-     * 
+     *
      * Formatting a record means normalizing and formatting incoming records
      * so that they can be used by the handlers to ouput useful information.
-     * 
+     *
      * @param LogRecord $record the record to format
      * @return LogRecord the formatted record
      */
@@ -22,7 +22,7 @@ interface Formatter
 
     /**
      * Formats a set of records at once.
-     * 
+     *
      * @param LogRecord $records records to format
      * @return array<LogRecord> formatted records
      */

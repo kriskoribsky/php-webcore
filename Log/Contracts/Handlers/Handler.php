@@ -11,10 +11,10 @@ interface Handler
 {
     /**
      * Handles a record.
-     * 
+     *
      * All records may be passed to this method, the handler should discard
      * those records which are below handler's logging level.
-     * 
+     *
      * @param LogRecord $record the record to handle
      * @return bool true if the record was handled successfully, false otherwise
      */
@@ -30,9 +30,9 @@ interface Handler
 
     /**
      * Closes the handler.
-     * 
+     *
      * Ends a log cycle and frees all resources used by the handler.
-     * Closing a Handler menas flushing all buffers and freeing any open resources/handles. 
+     * Closing a Handler menas flushing all buffers and freeing any open resources/handles.
      */
     public function close(): void;
 }

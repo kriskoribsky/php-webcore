@@ -15,7 +15,7 @@ class BaseException extends \Exception implements ExceptionInterface
         string $message,
         HttpStatus $http = HttpStatus::HTTP_INTERNAL_SERVER_ERROR,
         InternalStatus $internal = InternalStatus::ERROR_UNEXPECTED,
-        ExceptionInterface $previous = null
+        ExceptionInterface $previous = null,
     ) {
         $this->http = $http;
         $this->internal = $internal;

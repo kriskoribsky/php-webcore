@@ -6,7 +6,7 @@ class Path
     {
     }
 
-    public static function build(string...$segments): string
+    public static function build(string ...$segments): string
     {
         return join(DIRECTORY_SEPARATOR, $segments);
     }

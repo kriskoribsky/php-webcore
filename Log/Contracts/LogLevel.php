@@ -61,7 +61,7 @@ enum LogLevel: int
 
     /**
      * Create using name.
-     * 
+     *
      * @throws \UnhandledMatchError if name not one of the eight RFC 5424 levels
      */
     public static function fromName(string $name): self
@@ -80,7 +80,7 @@ enum LogLevel: int
 
     /**
      * Create using number.
-     * 
+     *
      * @throws \UnhandledMatchError if value not one of this implementation's values
      */
     public static function fromValue(int $value): self

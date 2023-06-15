@@ -9,12 +9,12 @@ use App\Interfaces\ExceptionInterface;
 
 class RouteNotFoundException extends BaseException implements ExceptionInterface
 {
-   public function __construct(
-      string $message = 'Route not found',
-      HttpStatus $http = HttpStatus::HTTP_NOT_FOUND,
-      InternalStatus $internal = InternalStatus::ERROR_ROUTER,
-      ExceptionInterface $previous = null,
-   ) {
-      parent::__construct($message, $http, $internal, $previous);
-   }
+    public function __construct(
+        string $message = 'Route not found',
+        HttpStatus $http = HttpStatus::HTTP_NOT_FOUND,
+        InternalStatus $internal = InternalStatus::ERROR_ROUTER,
+        ExceptionInterface $previous = null,
+    ) {
+        parent::__construct($message, $http, $internal, $previous);
+    }
 }
