@@ -2,6 +2,7 @@
 
 namespace Core\Log\Contracts\Handlers;
 
+use Core\Log\Contracts\LogLevel;
 use Core\Log\Contracts\LogRecord;
 
 /**
@@ -9,6 +10,33 @@ use Core\Log\Contracts\LogRecord;
  */
 interface Handler
 {
+    /**
+     * Sets minimum logging level at which this handler will be triggered.
+     *
+     * @param mixed $level the logging level to set
+     * @return self Returns the handler instance for method chaining
+     * @throws \Core\Log\Exceptions\InvalidArgumentException if the level is invalid or not supported
+     */
+    public function setLevel(mixed $level): self;
+
+    /**
+     * Gets minimum logging level at which this handler will be triggered.
+     *
+     * @return LogLevel the logging level of the handler
+     */
+    public function getLevel(): LogLevel;
+
+    /**
+     * Checks whether the given record will be handled by this handler.
+     *
+     * This is mostly done for performance reasons, to avoid calling handler for nothing.
+     * Handlers should still check the record levels within handle().
+     *
+     * @param LogRecord $record the log record to check
+     * @return bool true if the handler can handle the log record, false otherwise
+     */
+    public function handlesLevel(LogRecord $record): bool;
+
     /**
      * Handles a record.
      *
@@ -33,6 +61,9 @@ interface Handler
      *
      * Ends a log cycle and frees all resources used by the handler.
      * Closing a Handler menas flushing all buffers and freeing any open resources/handles.
+     *
+     * This is useful at the end of a request and will be called automatically when the object
+     * is destroyed if you extend Core\Log\Contracts\Handlers\AbstractHandler.
      */
     public function close(): void;
 }

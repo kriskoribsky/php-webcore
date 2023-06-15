@@ -8,6 +8,6 @@ namespace Core\Log\Contracts;
  */
 interface LogRecord
 {
-    // TODO add custom datetime contract
+    // FEAT add time-stamp property
     public function __construct(string $channel, LogLevel $level, string $message, array $context, array $extra);
 }

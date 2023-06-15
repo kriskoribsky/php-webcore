@@ -5,7 +5,7 @@ namespace Core\Log\Contracts;
 use Core\Log\Contracts\Processors\Processor;
 use Core\Log\Contracts\Handlers\Handler;
 use Core\Log\Contracts\Formatters\Formatter;
-
+use DateTimeZone;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -14,17 +14,17 @@ use Psr\Log\LoggerInterface;
 interface Logger extends LoggerInterface
 {
     /**
-     * @return string Logger object's name.
+     * @return string Logger object's channel name
      */
-    public function getName(): string;
+    public function getChannel(): string;
 
     /**
-     * Return a new cloned instance with the name changed.
+     * Return a new cloned instance with the channel name changed.
      *
-     * @param string $name name of the new instance
+     * @param string $channel channel name of the new instance
      * @return self cloned instance of previous logger
      */
-    public function withName(string $name): self;
+    public function withChannel(string $channel): self;
 
     /**
      * Adds a processor on to the stack.
@@ -87,4 +87,14 @@ interface Logger extends LoggerInterface
      * @return array<Handler> assigned handlers
      */
     public function getHandlers(): array;
+
+    /**
+     * Ends a log cycle and frees all resources used by handlers.
+     *
+     * Closing a Handler means flushing all buffers and freeing any open resources/handles.
+
+     * This is useful at the end of a request and will be called automatically on every handler
+     * when they get destructed.
+     */
+    public function close(): void;
 }

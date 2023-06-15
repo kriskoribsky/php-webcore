@@ -2,146 +2,88 @@
 
 namespace Core\Log\Contracts;
 
-use Psr\Log\LogLevel as PsrLogLevel;
-
 /**
- * Framework specific version of PSR-3: Logger Interface's LogLevel.
+ * Interface for enum implementing framework specific version
+ * of PSR-3: Logger Interface's LogLevel.
  */
-enum LogLevel: int
+interface LogLevel
 {
-    /**
-     * Urgent alert.
-     */
-    case EMERGENCY = 600;
-
-    /**
-     * Action must be taken immediately
-     *
-     * Example: Entire website down, database unavailable, etc.
-     * This should trigger the SMS alerts and wake you up.
-     */
-    case ALERT = 550;
-
-    /**
-     * Critical conditions
-     *
-     * Example: Application component unavailable, unexpected exception.
-     */
-    case CRITICAL = 500;
-
-    /**
-     * Runtime errors
-     */
-    case ERROR = 400;
-
-    /**
-     * Exceptional occurrences that are not errors
-     *
-     * Examples: Use of deprecated APIs, poor use of an API,
-     * undesirable things that are not necessarily wrong.
-     */
-    case WARNING = 300;
-
-    /**
-     * Uncommon events
-     */
-    case NOTICE = 250;
-
-    /**
-     * Interesting events
-     *
-     * Examples: User logs in, SQL logs.
-     */
-    case INFO = 200;
-
-    /**
-     * Detailed debug information
-     */
-    case DEBUG = 100;
-
     /**
      * Create using name.
      *
-     * @throws \UnhandledMatchError if name not one of the eight RFC 5424 levels
+     * @param string $name the name of the log level
+     * @return self the corresponding log level enum instance
+     * @throws \Core\Log\Exceptions\InvalidArgumentException if name not one of the eight RFC 5424 levels
      */
-    public static function fromName(string $name): self
-    {
-        return match ($name) {
-            'debug', 'Debug', 'DEBUG' => self::Debug,
-            'info', 'Info', 'INFO' => self::Info,
-            'notice', 'Notice', 'NOTICE' => self::Notice,
-            'warning', 'Warning', 'WARNING' => self::Warning,
-            'error', 'Error', 'ERROR' => self::Error,
-            'critical', 'Critical', 'CRITICAL' => self::Critical,
-            'alert', 'Alert', 'ALERT' => self::Alert,
-            'emergency', 'Emergency', 'EMERGENCY' => self::Emergency,
-        };
-    }
+    public static function fromName(string $name): self;
 
     /**
      * Create using number.
      *
-     * @throws \UnhandledMatchError if value not one of this implementation's values
+     * @param int $value the value of the log level
+     * @return self the corresponding log level enum instance
+     * @throws \Core\Log\Exceptions\InvalidArgumentException if value not one of the eight enum levels
      */
-    public static function fromValue(int $value): self
-    {
-        return self::from($value);
-    }
+    public static function fromValue(int $value): self;
 
-    public function includes(LogLevel $level): bool
-    {
-        return $this->value <= $level->value;
-    }
+    /**
+     * Create a using a mixed value.
+     *
+     * @param mixed $level the mixed value representing the log level
+     * @return self the corresponding log level enum instance
+     * @throws \Core\Log\Exceptions\InvalidArgumentException if the mixed value is invalid or not supported
+     */
+    public static function fromMixed(mixed $level): self;
 
-    public function isHigherThan(LogLevel $level): bool
-    {
-        return $this->value > $level->value;
-    }
+    /**
+     * Converts the log level to its corresponding name.
+     *
+     * @return string the name of the log level
+     */
+    public function toName(): string;
 
-    public function isLowerThan(LogLevel $level): bool
-    {
-        return $this->value < $level->value;
-    }
+    /**
+     * Converts the log level to its corresponding value.
+     *
+     * @return int the value of the log level
+     */
+    public function toValue(): int;
 
-    public function toName(): string
-    {
-        return match ($this) {
-            self::EMERGENCY => 'EMERGENCY',
-            self::ALERT => 'ALERT',
-            self::CRITICAL => 'CRITICAL',
-            self::ERROR => 'ERROR',
-            self::WARNING => 'WARNING',
-            self::NOTICE => 'NOTICE',
-            self::INFO => 'INFO',
-            self::DEBUG => 'DEBUG',
-        };
-    }
+    /**
+     * Converts the log level to its corresponding PSR-3 value.
+     *
+     * @return string the PSR-3 value of the log level
+     */
+    public function toPsrValue(): string;
 
-    public function toPsrLogLevel(): string
-    {
-        return match ($this) {
-            self::EMERGENCY => PsrLogLevel::EMERGENCY,
-            self::ALERT => PsrLogLevel::ALERT,
-            self::CRITICAL => PsrLogLevel::CRITICAL,
-            self::ERROR => PsrLogLevel::ERROR,
-            self::WARNING => PsrLogLevel::WARNING,
-            self::NOTICE => PsrLogLevel::NOTICE,
-            self::INFO => PsrLogLevel::INFO,
-            self::DEBUG => PsrLogLevel::DEBUG,
-        };
-    }
+    /**
+     * Converts the log level to its corresponding RFC 5424 value.
+     *
+     * @return int the RFC 5424 value of the log level
+     */
+    public function toRFC5424Value(): int;
 
-    public function toRFC5424Level(): int
-    {
-        return match ($this) {
-            self::EMERGENCY => 0,
-            self::ALERT => 1,
-            self::CRITICAL => 2,
-            self::ERROR => 3,
-            self::WARNING => 4,
-            self::NOTICE => 5,
-            self::INFO => 6,
-            self::DEBUG => 7,
-        };
-    }
+    /**
+     * Checks if this log level is higher or equal to the given log level.
+     *
+     * @param LogLevel $level The log level to compare
+     * @return bool true if this log level includes the given log level, false otherwise
+     */
+    public function includes(self $level): bool;
+
+    /**
+     * Checks if this log level is higher than the given log level.
+     *
+     * @param LogLevel $level The log level to compare
+     * @return bool true if this log level is higher than the given log level, false otherwise
+     */
+    public function higherThan(self $level): bool;
+
+    /**
+     * Checks if this log level is lower than the given log level.
+     *
+     * @param LogLevel $level The log level to compare
+     * @return bool true if this log level is lower than the given log level, false otherwise
+     */
+    public function lowerThan(self $level): bool;
 }

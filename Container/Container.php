@@ -41,7 +41,7 @@ class Container implements ContainerInterface
         if ($concrete instanceof \Closure) {
             $this->set(new ContainerItem($id, $concrete, ContainerItemType::BIND));
         }
-        // TODO: refactor interfaces & this method
+        // FEAT: refactor interfaces & this method
         else {
             $this->set(new ContainerItem($id, null, ContainerItemType::INTERFACE, $concrete));
         }

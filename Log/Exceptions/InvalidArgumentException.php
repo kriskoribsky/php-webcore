@@ -2,8 +2,8 @@
 
 namespace Core\Log\Exceptions;
 
-use Psr\Log\InvalidArgumentException as PsrInvalidArgumentException;
+use Psr\Log\InvalidArgumentException as InvalidArgumentExceptionPsr;
 
-class InvalidArgumentException extends PsrInvalidArgumentException
+class InvalidArgumentException extends InvalidArgumentExceptionPsr
 {
 }

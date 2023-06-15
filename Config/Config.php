@@ -17,7 +17,7 @@ class Config
 
     public function load_yaml(string $path): void
     {
-        // TODO: install YAML library & implement this function
+        // FEAT: install YAML library & implement this function
     }
 
     private function add_options(array|false $parsed, string $path): void
