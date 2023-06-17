@@ -1,0 +1,25 @@
+{
+  "name": "kriskoribsky/webcore",
+  "description": "Core of the custom personal framework designed for web application development.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kristian Koribsky",
+      "email": "kiko.koribsky@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "files": [],
+    "psr-4": {}
+  },
+  "autoload-dev": {
+    "files": [],
+    "psr-4": {}
+  },
+  "require": {}
+}
