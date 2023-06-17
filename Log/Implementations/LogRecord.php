@@ -5,7 +5,7 @@ namespace Core\Log\Implementations;
 use Core\Log\Contracts\LogRecord as LogRecordContract;
 use Core\Log\Contracts\LogLevel;
 
-class LogRecord implements LogRecordContract
+final class LogRecord implements LogRecordContract
 {
     public function __construct(
         public readonly string $channel,

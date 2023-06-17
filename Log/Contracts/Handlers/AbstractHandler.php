@@ -7,8 +7,8 @@ use Core\Log\Contracts\LogLevel;
 
 /**
  * Abstract class providing default implementations
- * of some methods defined in the Handler interface,
- * making it easier to extend and create custom Handlers.
+ * of methods defined in the Handler interface, making
+ * it easier to extend and create custom Handlers.
  */
 abstract class AbstractHandler implements Handler
 {
