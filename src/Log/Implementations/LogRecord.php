@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Implementations;
+namespace WebCore\Log\Implementations;
 
-use Core\Log\Contracts\LogRecord as LogRecordContract;
-use Core\Log\Contracts\LogLevel;
+use WebCore\Log\Contracts\LogRecord as LogRecordContract;
+use WebCore\Log\Contracts\LogLevel;
 
 final class LogRecord implements LogRecordContract
 {

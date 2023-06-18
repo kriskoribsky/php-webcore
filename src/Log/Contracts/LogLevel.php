@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Contracts;
+namespace WebCore\Log\Contracts;
 
 /**
  * Interface for enum implementing framework specific version
@@ -13,7 +13,7 @@ interface LogLevel
      *
      * @param string $name the name of the log level
      * @return self the corresponding log level enum instance
-     * @throws \Core\Log\Exceptions\InvalidArgumentException if name not one of the eight RFC 5424 levels
+     * @throws \WebCore\Log\Exceptions\InvalidArgumentException if name not one of the eight RFC 5424 levels
      */
     public static function fromName(string $name): self;
 
@@ -22,7 +22,7 @@ interface LogLevel
      *
      * @param int $value the value of the log level
      * @return self the corresponding log level enum instance
-     * @throws \Core\Log\Exceptions\InvalidArgumentException if value not one of the eight enum levels
+     * @throws \WebCore\Log\Exceptions\InvalidArgumentException if value not one of the eight enum levels
      */
     public static function fromValue(int $value): self;
 
@@ -31,7 +31,7 @@ interface LogLevel
      *
      * @param mixed $level the mixed value representing the log level
      * @return self the corresponding log level enum instance
-     * @throws \Core\Log\Exceptions\InvalidArgumentException if the mixed value is invalid or not supported
+     * @throws \WebCore\Log\Exceptions\InvalidArgumentException if the mixed value is invalid or not supported
      */
     public static function fromMixed(mixed $level): self;
 

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Contracts\Processors;
+namespace WebCore\Log\Contracts\Processors;
 
-use Core\Log\Contracts\LogRecord;
+use WebCore\Log\Contracts\LogRecord;
 
 /**
  * Interface that all Processors must implement.

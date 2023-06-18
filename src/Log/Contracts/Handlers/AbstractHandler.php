@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Contracts\Handlers;
+namespace WebCore\Log\Contracts\Handlers;
 
-use Core\Log\Contracts\LogRecord;
-use Core\Log\Contracts\LogLevel;
+use WebCore\Log\Contracts\LogRecord;
+use WebCore\Log\Contracts\LogLevel;
 
 /**
  * Abstract class providing default implementations

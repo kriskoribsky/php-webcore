@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Exceptions;
+namespace WebCore\Log\Exceptions;
 
 use Psr\Log\InvalidArgumentException as InvalidArgumentExceptionPsr;
 

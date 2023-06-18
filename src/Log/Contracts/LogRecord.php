@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Contracts;
+namespace WebCore\Log\Contracts;
 
 /**
  * Interface for standardising log record created by logger and

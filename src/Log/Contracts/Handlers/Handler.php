@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Contracts\Handlers;
+namespace WebCore\Log\Contracts\Handlers;
 
-use Core\Log\Contracts\LogLevel;
-use Core\Log\Contracts\LogRecord;
+use WebCore\Log\Contracts\LogLevel;
+use WebCore\Log\Contracts\LogRecord;
 
 /**
  * Interface that all Handlers must implement.
@@ -15,7 +15,7 @@ interface Handler
      *
      * @param mixed $level the logging level to set
      * @return self Returns the handler instance for method chaining
-     * @throws \Core\Log\Exceptions\InvalidArgumentException if the level is invalid or not supported
+     * @throws \WebCore\Log\Exceptions\InvalidArgumentException if the level is invalid or not supported
      */
     public function setLevel(mixed $level): self;
 
@@ -63,7 +63,7 @@ interface Handler
      * Closing a Handler menas flushing all buffers and freeing any open resources/handles.
      *
      * This is useful at the end of a request and will be called automatically when the object
-     * is destroyed if you extend Core\Log\Contracts\Handlers\AbstractHandler.
+     * is destroyed if you extend WebCore\Log\Contracts\Handlers\AbstractHandler.
      */
     public function close(): void;
 }

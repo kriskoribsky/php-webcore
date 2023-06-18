@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Contracts\Formatters;
+namespace WebCore\Log\Contracts\Formatters;
 
-use Core\Log\Contracts\LogRecord;
+use WebCore\Log\Contracts\LogRecord;
 
 /**
  * Abstract class providing default implementations

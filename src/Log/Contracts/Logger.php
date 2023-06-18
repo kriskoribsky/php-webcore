@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Contracts;
+namespace WebCore\Log\Contracts;
 
-use Core\Log\Contracts\Processors\Processor;
-use Core\Log\Contracts\Handlers\Handler;
-use Core\Log\Contracts\Formatters\Formatter;
+use WebCore\Log\Contracts\Processors\Processor;
+use WebCore\Log\Contracts\Handlers\Handler;
+use WebCore\Log\Contracts\Formatters\Formatter;
 use DateTimeZone;
 use Psr\Log\LoggerInterface;
 

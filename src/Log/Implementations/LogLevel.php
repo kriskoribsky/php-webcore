@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Implementations;
+namespace WebCore\Log\Implementations;
 
-use Core\Log\Contracts\LogLevel as LogLevelContract;
-use Core\Log\Exceptions\InvalidArgumentException;
+use WebCore\Log\Contracts\LogLevel as LogLevelContract;
+use WebCore\Log\Exceptions\InvalidArgumentException;
 
 use Psr\Log\LogLevel as LogLevelPsr;
 

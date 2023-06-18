@@ -10,16 +10,30 @@
     }
   ],
   "minimum-stability": "stable",
+  "prefer-stable": true,
   "config": {
-    "sort-packages": true
+    "lock": false,
+    "sort-packages": true,
+    "platform-check": true
+  },
+  "scripts": {
+    "test": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text"
   },
   "autoload": {
     "files": [],
-    "psr-4": {}
+    "psr-4": {
+      "WebCore\\": "src/"
+    }
   },
   "autoload-dev": {
     "files": [],
     "psr-4": {}
   },
-  "require": {}
+  "require-dev": {
+    "phpunit/phpunit": "^10"
+  },
+  "require": {
+    "php": "^8.2",
+    "psr/log": "^3.0"
+  }
 }

@@ -1,16 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Core\Log\Implementations;
+namespace WebCore\Log\Implementations;
 
-use Core\Log\Contracts\Logger as LoggerContract;
-use Core\Log\Contracts\LogLevel;
-use Core\Log\Contracts\Processors\Processor;
-use Core\Log\Contracts\Handlers\Handler;
-use Core\Log\Exceptions\InvalidArgumentException;
-use DateTimeZone;
+use WebCore\Log\Contracts\Logger as LoggerContract;
+use WebCore\Log\Contracts\LogLevel;
+use WebCore\Log\Contracts\Processors\Processor;
+use WebCore\Log\Contracts\Handlers\Handler;
+
 use Psr\Log\LoggerTrait;
-
-// REFACTOR make all docblock's @param capitalized & consistent
 
 final class Logger implements LoggerContract
 {
@@ -25,6 +22,9 @@ final class Logger implements LoggerContract
 
     public function log(mixed $level, string|\Stringable $message, array $context = []): void
     {
+        $level = LogLevel::fromMixed($level);
+
+        $this->send($level, $message, $context);
     }
 
     public function getChannel(): string
