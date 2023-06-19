@@ -5,6 +5,7 @@ WORKDIR /
 # Install required dependencies
 RUN apk add --no-cache $PHPIZE_DEPS autoconf
 RUN apk add --update linux-headers
+RUN apk add --update make
 
 # Install php extensions
 RUN docker-php-ext-install pdo pdo_mysql

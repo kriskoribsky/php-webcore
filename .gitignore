@@ -1,8 +1,10 @@
 /vendor
 /node_modules
-/var
+
+/tmp
 
 composer.lock
 package-lock.json
 
 phpunit.xml
+phpstan.neon

@@ -14,10 +14,10 @@
   "config": {
     "lock": false,
     "sort-packages": true,
-    "platform-check": true
-  },
-  "scripts": {
-    "test": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text"
+    "platform-check": true,
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
   },
   "autoload": {
     "files": [],
@@ -30,7 +30,11 @@
     "psr-4": {}
   },
   "require-dev": {
-    "phpunit/phpunit": "^10"
+    "phpunit/phpunit": "^10",
+    "phpstan/phpstan": "^1.10",
+    "phpstan/extension-installer": "^1.3",
+    "phpstan/phpstan-deprecation-rules": "^1.1",
+    "phpstan/phpstan-strict-rules": "^1.5"
   },
   "require": {
     "php": "^8.2",
