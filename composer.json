@@ -22,7 +22,7 @@
   "autoload": {
     "files": [],
     "psr-4": {
-      "WebCore\\": "src/"
+      "WebCore\\": "src/WebCore/"
     }
   },
   "autoload-dev": {
