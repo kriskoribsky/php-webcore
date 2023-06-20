@@ -29,8 +29,8 @@ for PHP development such as `PHPUnit` and `PHPStan` for various kinds of
 testing and code analysis. There is also `prettier` cli tool for keeping  
 code base consistent.
 
-Easiest way to use these tools is to use targets provided in `Makefile`:
+Easiest way to use these tools is to run targets provided in `Makefile`:
 
-1. `make test` to run unit/integration/application tests
+1. `make test` to run unit, integration or application tests
 2. `make static` to run static code analysis
 3. `make format` to format the whole `src/` directory using `prettier`

@@ -52,16 +52,16 @@
 
     <source>
         <include>
-            <directory suffix=".php">src/</directory>
+            <directory suffix=".php">src/WebCore/</directory>
         </include>
         <exclude>
-            <directory suffix=".php">src/*/Tests/</directory>
+            <directory suffix=".php">src/WebCore/*/Tests/</directory>
         </exclude>
     </source>
 
     <testsuites>
         <testsuite name="WebCore Unit">
-            <directory phpVersion="8.2.7" prefix="Test" suffix=".php">src/*/Tests/</directory>
+            <directory phpVersion="8.2.7" prefix="Test" suffix=".php">src/WebCore/*/Tests/</directory>
         </testsuite>
 
         <testsuite name="WebCore Integration">

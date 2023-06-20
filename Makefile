@@ -30,4 +30,4 @@ format: $(PRETTIER_FILES)
 	npx prettier --write $(DIR_SRC)
 
 # Metadata
-.PHONY: full test static docker
+.PHONY: full test static docker-up docker-down format
