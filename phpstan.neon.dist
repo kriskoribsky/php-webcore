@@ -1,0 +1,25 @@
+parameters:
+    level: max
+
+    reportUnmatchedIgnoredErrors: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    checkUninitializedProperties: true
+    checkImplicitMixed: true
+    checkBenevolentUnionTypes: true
+    reportAlwaysTrueInLastCondition: true
+    treatPhpDocTypesAsCertain: true
+    tipsOfTheDay: true
+
+    paths:
+        - src/
+
+includes: 
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+    - vendor/slam/phpstan-extensions/conf/slam-rules.neon
+    - vendor/slam/phpstan-extensions/conf/not-now-rules.neon
+    - vendor/struggle-for-php/sfp-phpstan-psr-log/extension.neon
+    - vendor/struggle-for-php/sfp-phpstan-psr-log/rules.neon

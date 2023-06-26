@@ -1,0 +1,11 @@
+version: '3'
+services:
+  phpcli:
+    container_name: webutils-phpcli
+    build:
+      context: .
+      dockerfile: phpcli-composer.Dockerfile
+    volumes:
+      - ../:/webutils-php/
+    stdin_open: true
+    tty: true
