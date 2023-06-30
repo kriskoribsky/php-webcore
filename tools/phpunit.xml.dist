@@ -2,8 +2,8 @@
 <phpunit
     backupGlobals="false"
     backupStaticProperties="false"
-    bootstrap="vendor/autoload.php"
-    cacheDirectory="tmp/"
+    bootstrap="../vendor/autoload.php"
+    cacheDirectory="../tmp/testers/"
     cacheResult="true"
     colors="true"
     columns="80"
@@ -52,33 +52,33 @@
 
     <source>
         <include>
-            <directory suffix=".php">src/</directory>
+            <directory suffix=".php">../src/</directory>
         </include>
         <exclude>
-            <directory suffix=".php">src/*/Tests/</directory>
+            <directory suffix=".php">../src/*/Tests/</directory>
         </exclude>
     </source>
 
     <testsuites>
         <testsuite name="Webutils Unit">
-            <directory phpVersion="8.2.7" prefix="Test" suffix=".php">src/*/Tests/</directory>
+            <directory phpVersion="8.2.7" prefix="Test" suffix=".php">../src/*/Tests/</directory>
         </testsuite>
 
         <testsuite name="Webutils Integration">
         </testsuite>
 
-        <testsuite name="Webutils Application">
+        <testsuite name="Webutils End-to-end">
         </testsuite>
     </testsuites>
 
     <coverage includeUncoveredFiles="true" pathCoverage="true" disableCodeCoverageIgnore="true">
         <report>
-            <html outputDirectory="tmp/html-coverage" lowUpperBound="50" highLowerBound="90" />
+            <html outputDirectory="../tmp/testers/coverage" lowUpperBound="50" highLowerBound="90" />
         </report>
     </coverage>
 
     <logging>
-        <testdoxText outputFile="tmp/testdox.txt" />
+        <testdoxText outputFile="../tmp/testers/testdox.txt" />
     </logging>
 
 </phpunit>

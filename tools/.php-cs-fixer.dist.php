@@ -1,9 +1,25 @@
 <?php declare(strict_types=1);
 
-// Part of webutils package.
+/*
+ * This file is part of the Webutils package.
+ *
+ * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+$dirRoot = \realpath(__DIR__.\DIRECTORY_SEPARATOR.'..'.\DIRECTORY_SEPARATOR);
+$dirSrc = $dirRoot.\DIRECTORY_SEPARATOR.'src';
+$dirCache = $dirRoot.\DIRECTORY_SEPARATOR.'tmp'.\DIRECTORY_SEPARATOR.'formatters'.\DIRECTORY_SEPARATOR.'.php-cs-fixer.cache';
 
 $header = <<<'EOF'
-        Part of webutils package.
+    This file is part of the Webutils package.
+
+    (c) Kristian Koribsky <kristian.koribsky@gmail.com>
+
+    For the full copyright and license information, please view the LICENSE
+    file that was distributed with this source code.
     EOF;
 
 $rules = [
@@ -50,7 +66,7 @@ $rules = [
     'no_trailing_comma_in_singleline' => true,
     'non_printable_character' => true,
     'octal_notation' => true,
-    'psr_autoloading' => ['dir' => 'src'],
+    'psr_autoloading' => ['dir' => $dirSrc],
     'single_line_empty_body' => true,
 
     // Casing
@@ -75,7 +91,7 @@ $rules = [
     // Class Notation
     'class_attributes_separation' => true,
     'class_definition' => ['single_line' => true],
-    'final_class' => true,
+    'final_class' => false,
     'final_internal_class' => true,
     'final_public_method_for_abstract_class' => true,
     'no_blank_lines_after_class_opening' => true,
@@ -155,7 +171,7 @@ $rules = [
     'implode_call' => true,
     'lambda_not_used_import' => true,
     'method_argument_space' => true,
-    'native_function_invocation' => true,
+    'native_function_invocation' => ['include' => ['@all'], 'scope' => 'all', 'strict' => true],
     'no_spaces_after_function_name' => true,
     'no_trailing_comma_in_singleline_function_call' => true,
     'no_unreachable_default_argument_value' => true,
@@ -344,7 +360,6 @@ $customRules = [
     PhpCsFixerCustomFixers\Fixer\CommentSurroundedBySpacesFixer::name() => true,
     PhpCsFixerCustomFixers\Fixer\CommentedOutFunctionFixer::name() => true,
     PhpCsFixerCustomFixers\Fixer\ConstructorEmptyBracesFixer::name() => true,
-    PhpCsFixerCustomFixers\Fixer\DataProviderNameFixer::name() => true,
     PhpCsFixerCustomFixers\Fixer\DataProviderReturnTypeFixer::name() => true,
     PhpCsFixerCustomFixers\Fixer\DeclareAfterOpeningTagFixer::name() => true,
     PhpCsFixerCustomFixers\Fixer\EmptyFunctionBodyFixer::name() => true,
@@ -391,16 +406,16 @@ $customRules = [
 $finder = PhpCsFixer\Finder::create()
     ->files()
     ->name('*.php')
-    ->in(__DIR__.\DIRECTORY_SEPARATOR.'src')
+    ->in($dirSrc)
     ->append([__FILE__])
 ;
 
 $config = (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setUsingCache(true)
-    ->setCacheFile('tmp/.php-cs-fixer.cache')
+    ->setCacheFile($dirCache)
     ->registerCustomFixers(new PhpCsFixerCustomFixers\Fixers())
-    ->setRules(array_merge($rules, $customRules))
+    ->setRules(\array_merge($rules, $customRules))
     ->setFinder($finder)
 ;
 

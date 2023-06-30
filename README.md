@@ -4,13 +4,16 @@ Simple utility constants, functions and classes to use with other frameworks/imp
 The primary aim of this package is to provide integrity and reduce bug-prone hardcoding of
 commonly used constants, while also providing methods for conversion and formatting.
 
-Primary usage:
+Features:
 
 -   **Constants** for any PSR-7, PSR-15, PSR-17 and PSR-18 implementations.  
     Reffering to HTTP methods, status codes, messages and headers.
 -   **Helpers** for some other PSR implementations.
 -   **Integration** with frameworks, for example `kriskoribsky/webcore`.
 -   **Bridge** between framework core and api services.
+-   **Flexibility** of usage: enums, traits or interfaces tailored to your use case.
+
+> **Note**: Implementation of any PSR interfaces is not within the scope of this package.
 
 ## Installation
 

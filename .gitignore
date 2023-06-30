@@ -1,10 +1,7 @@
 /vendor
-/node_modules
-
 /tmp
+/tools/*
 
-composer.lock
-
-phpunit.xml
-phpstan.neon
-.php-cs-fixer.php
+!/tools/phpunit.xml.dist
+!/tools/phpstan.neon.dist
+!/tools/.php-cs-fixer.dist.php
