@@ -18,28 +18,26 @@ namespace Web\Utils\Http\Abstract\Data;
 interface MediaTypeExtensionInterface
 {
     /**
-     * Get the file extension associated with the current
+     * Gets the file extension associated with the current
      * media type.
      *
-     * @return ?string the file extension or null if extension is not provided for this media type
-     *
-     * @throws \Web\Utils\Http\Exception\UnsupportedExtensionException not supported
+     * @return string file extension of the current media type
      */
-    public function getFileExtension(): ?string;
+    public function getFileExtension(): string;
 
     /**
-     * Create a new instance of based on a file extension.
+     * Creates a new instance based on provided file extension.
      *
      * @param string $extension the file extension
      *
      * @return static new instance
      *
-     * @throws \Web\Utils\Http\Exception\UnsupportedExtensionException not supported
+     * @throws \Web\Utils\Http\Exception\UnsupportedExtensionException
      */
     public static function fromFileExtension(string $extension): static;
 
     /**
-     * Try to create a new instance based on a file extension.
+     * Tries to create a new instance based on provided file extension.
      * Returns null if the creation fails.
      *
      * @param string $extension the file extension

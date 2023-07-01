@@ -14,17 +14,9 @@ namespace Web\Utils\Http\Abstract\Data;
 use Web\Utils\Http\Exception\UnsupportedExtensionException;
 
 /**
- * HTTP uses media types in the Content-Type and Accept header fields
- * in order to provide open and extensible data typing and type negotiation.
- * Media types define both a data format and various processing models:
- * how to process that data in accordance with the message context.
+ * Enum equivalent of MediaTypeInterface.
  *
- * This enum includes non-exhaustive list of constants for the most common
- * media types with corresponding document types, ordered alphabetically.
- *
- * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-media-type
- * @see https://www.iana.org/assignments/media-types/media-types.xhtml
- * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+ * @see MediaTypeInterface
  */
 enum MediaType: string implements MediaTypeExtensionInterface
 {
@@ -477,17 +469,20 @@ enum MediaType: string implements MediaTypeExtensionInterface
     /**
      * {@inheritDoc}
      */
-    public function getFileExtension(): ?string
+    public function getFileExtension(): string
     {
-        return self::MEDIA_TYPE_EXTENSIONS[$this->value] ?? null;
+        return self::MEDIA_TYPE_EXTENSIONS[$this->value];
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public static function fromFileExtension(string $extension): static
     {
         $extension = \trim($extension);
 
         if ( ! \str_starts_with($extension, '.')) {
-            $extension = '.'.$extension;
+            $extension = '.' . $extension;
         }
 
         $result = \array_search($extension, self::MEDIA_TYPE_EXTENSIONS, true);

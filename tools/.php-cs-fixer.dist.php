@@ -227,7 +227,7 @@ $rules = [
     // Operator
     'assign_null_coalescing_to_coalesce_equal' => true,
     'binary_operator_spaces' => true,
-    'concat_space' => true,
+    'concat_space' => ['spacing' => 'one'],
     'increment_style' => true,
     'logical_operators' => true,
     'new_with_braces' => true,

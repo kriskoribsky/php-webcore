@@ -12,6 +12,8 @@
 namespace Web\Utils\Http\Abstract\Method;
 
 /**
+ * Enum equivalent of HttpMethodInterface.
+ *
  * @see HttpMethodInterface
  */
 enum HttpMethod: string implements HttpMethodSafetyInterface

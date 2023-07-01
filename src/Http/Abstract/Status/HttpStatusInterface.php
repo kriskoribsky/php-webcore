@@ -40,17 +40,17 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-100-continue
      */
-    public const HTTP_CONTINUE = 100;
+    public const CONTINUE = 100;
 
-    // TODO @see upgrade header field
     /**
      * The 101 (Switching Protocols) status code indicates that the server understands
      * and is willing to comply with the client's request, via the Upgrade header field,
      * for a change in the application protocol being used on this connection.
      *
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::UPGRADE
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-101-switching-protocols
      */
-    public const HTTP_SWITCHING_PROTOCOLS = 101;
+    public const SWITCHING_PROTOCOLS = 101;
 
     /**
      * The 102 (Processing) status code is an interim response used to inform
@@ -59,7 +59,7 @@ interface HttpStatusInterface
      *
      * @see https://datatracker.ietf.org/doc/html/rfc2518#section-10.1
      */
-    public const HTTP_PROCESSING = 102;
+    public const PROCESSING = 102;
 
     /**
      * The 103 (Early Hints) informational status code indicates to the
@@ -68,9 +68,9 @@ interface HttpStatusInterface
      *
      * @see https://datatracker.ietf.org/doc/html/rfc8297#section-2
      */
-    public const HTTP_EARLY_HINTS = 103;
+    public const EARLY_HINTS = 103;
 
-    // 2xx (SUCCESSFUL): The request was successfully received, understood, and accepted
+    // 2xx (Successful): The request was successfully received, understood, and accepted
     // ================================================================================
     // The 2xx (Successful) class of status code indicates that the client's request was
     // successfully received, understood, and accepted.
@@ -83,9 +83,8 @@ interface HttpStatusInterface
      * @see \Web\Utils\Http\Abstract\Method\HttpMethodInterface
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-200-ok
      */
-    public const HTTP_OK = 200;
+    public const OK = 200;
 
-    // TODO finish @see reference for Location Header
     /**
      * The 201 (Created) status code indicates that the request has been
      * fulfilled and has resulted in one or more new resources being created.
@@ -93,10 +92,10 @@ interface HttpStatusInterface
      * a Location header field in the response or, if no Location header field
      * is received, by the target URI.
      *
-     * @see
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::LOCATION
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-201-created
      */
-    public const HTTP_CREATED = 201;
+    public const CREATED = 201;
 
     /**
      * The 202 (Accepted) status code indicates that the request has been accepted
@@ -106,7 +105,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-202-accepted
      */
-    public const HTTP_ACCEPTED = 202;
+    public const ACCEPTED = 202;
 
     /**
      * The 203 (Non-Authoritative Information) status code indicates that the
@@ -116,7 +115,7 @@ interface HttpStatusInterface
      * @see self::HTTP_OK
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-203-non-authoritative-infor
      */
-    public const HTTP_NON_AUTHORITATIVE_INFORMATION = 203;
+    public const NON_AUTHORITATIVE_INFORMATION = 203;
 
     /**
      * The 204 (No Content) status code indicates that the server has successfully
@@ -126,7 +125,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-204-no-content
      */
-    public const HTTP_NO_CONTENT = 204;
+    public const NO_CONTENT = 204;
 
     /**
      * The 205 (Reset Content) status code indicates that the server has fulfilled
@@ -136,7 +135,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-205-reset-content
      */
-    public const HTTP_RESET_CONTENT = 205;
+    public const RESET_CONTENT = 205;
 
     /**
      * The 206 (Partial Content) status code indicates that the server
@@ -145,7 +144,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-206-partial-content
      */
-    public const HTTP_PARTIAL_CONTENT = 206;
+    public const PARTIAL_CONTENT = 206;
 
     /**
      * A Multi-Status response conveys information about multiple resources
@@ -153,10 +152,10 @@ interface HttpStatusInterface
      * The default Multi-Status response body is a text/xml or
      * application/xml HTTP entity with a 'multistatus' root element.
      *
-     * @see \Web\Utils\Http\Abstract\Data\MediaTypeInterface::APPLICATION_XML
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::APPLICATION_XML
      * @see https://www.rfc-editor.org/rfc/rfc4918#section-13
      */
-    public const HTTP_MULTI_STATUS = 207;
+    public const MULTI_STATUS = 207;
 
     /**
      * The 208 (Already Reported) status code can be used inside a DAV:
@@ -165,7 +164,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc5842.html#section-7.1
      */
-    public const HTTP_ALREADY_REPORTED = 208;
+    public const ALREADY_REPORTED = 208;
 
     /**
      * The server has fulfilled a GET request for the resource, and the
@@ -174,7 +173,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc3229.html#section-10.4.1
      */
-    public const HTTP_IM_USED = 226;
+    public const IM_USED = 226;
 
     // 3xx (Redirection): Further action needs to be taken in order to complete the request
     // ================================================================================
@@ -191,7 +190,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-300-multiple-choices
      */
-    public const HTTP_MULTIPLE_CHOICES = 300;
+    public const MULTIPLE_CHOICES = 300;
 
     /**
      * The 301 (Moved Permanently) status code indicates that the target resource
@@ -200,7 +199,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-301-moved-permanently
      */
-    public const HTTP_MOVED_PERMANENTLY = 301;
+    public const MOVED_PERMANENTLY = 301;
 
     /**
      * The 302 (Found) status code indicates that the target resource resides
@@ -210,7 +209,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-302-found
      */
-    public const HTTP_FOUND = 302;
+    public const FOUND = 302;
 
     /**
      * The 303 (See Other) status code indicates that the server is redirecting
@@ -220,7 +219,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-303-see-other
      */
-    public const HTTP_SEE_OTHER = 303;
+    public const SEE_OTHER = 303;
 
     /**
      * The 304 (Not Modified) status code indicates that a conditional GET or HEAD
@@ -229,7 +228,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-304-not-modified
      */
-    public const HTTP_NOT_MODIFIED = 304;
+    public const NOT_MODIFIED = 304;
 
     /**
      * The 305 (Use Proxy) status code was defined in a previous version
@@ -238,7 +237,7 @@ interface HttpStatusInterface
      * @deprecated
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-305-use-proxy
      */
-    public const HTTP_USE_PROXY = 305;
+    public const USE_PROXY = 305;
 
     /**
      * This response code is no longer used; it is just reserved.
@@ -247,7 +246,7 @@ interface HttpStatusInterface
      * @deprecated
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-306-unused
      */
-    public const HTTP_SWITCH_PROXY = 306;
+    public const SWITCH_PROXY = 306;
 
     /**
      * The 307 (Temporary Redirect) status code indicates that the target
@@ -257,7 +256,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-307-temporary-redirect
      */
-    public const HTTP_TEMPORARY_REDIRECT = 307;
+    public const TEMPORARY_REDIRECT = 307;
 
     /**
      * The 308 (Permanent Redirect) status code indicates that the target
@@ -269,7 +268,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-308-permanent-redirect
      */
-    public const HTTP_PERMANENT_REDIRECT = 308;
+    public const PERMANENT_REDIRECT = 308;
 
     // 4xx (Client Error): The request contains bad syntax or cannot be fulfilled
     // ================================================================================
@@ -288,9 +287,8 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-400-bad-request
      */
-    public const HTTP_BAD_REQUEST = 400;
+    public const BAD_REQUEST = 400;
 
-    // TODO add WWW-Authenticate header @see
     /**
      * The 401 (Unauthorized) status code indicates that the request has not
      * been applied because it lacks valid authentication credentials for the
@@ -298,10 +296,10 @@ interface HttpStatusInterface
      * WWW-Authenticate header field containing at least one challenge
      * applicable to the target resource.
      *
-     * @see
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::WWW_AUTHENTICATE
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-401-unauthorized
      */
-    public const HTTP_UNAUTHORIZED = 401;
+    public const UNAUTHORIZED = 401;
 
     /**
      * This response code is reserved for future use. The initial aim for
@@ -310,7 +308,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-402-payment-required
      */
-    public const HTTP_PAYMENT_REQUIRED = 402;
+    public const PAYMENT_REQUIRED = 402;
 
     /**
      * The 403 (Forbidden) status code indicates that the server understood
@@ -320,7 +318,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-403-forbidden
      */
-    public const HTTP_FORBIDDEN = 403;
+    public const FORBIDDEN = 403;
 
     /**
      * The 404 (Not Found) status code indicates that the origin server
@@ -334,7 +332,7 @@ interface HttpStatusInterface
      * @see self::HTTP_GONE
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-404-not-found
      */
-    public const HTTP_NOT_FOUND = 404;
+    public const NOT_FOUND = 404;
 
     /**
      * The 405 (Method Not Allowed) status code indicates that the method
@@ -345,7 +343,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-405-method-not-allowed
      */
-    public const HTTP_METHOD_NOT_ALLOWED = 405;
+    public const METHOD_NOT_ALLOWED = 405;
 
     /**
      * The 406 (Not Acceptable) status code indicates that the target resource
@@ -355,9 +353,8 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-406-not-acceptable
      */
-    public const HTTP_NOT_ACCEPTABLE = 406;
+    public const NOT_ACCEPTABLE = 406;
 
-    // TODO add @see header
     /**
      * The 407 (Proxy Authentication Required) status code is similar to
      * 401 (Unauthorized), but it indicates that the client needs to
@@ -365,10 +362,10 @@ interface HttpStatusInterface
      * The proxy MUST send a Proxy-Authenticate header field containing
      * a challenge applicable to that proxy for the request.
      *
-     * @see
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::PROXY_AUTHENTICATE
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-407-proxy-authentication-re
      */
-    public const HTTP_PROXY_AUTHENTICATION_REQUIRED = 407;
+    public const PROXY_AUTHENTICATION_REQUIRED = 407;
 
     /**
      * The 408 (Request Timeout) status code indicates that the server did not receive
@@ -376,7 +373,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-408-request-timeout
      */
-    public const HTTP_REQUEST_TIMEOUT = 408;
+    public const REQUEST_TIMEOUT = 408;
 
     /**
      * The 409 (Conflict) status code indicates that the request could not be
@@ -387,7 +384,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-409-conflict
      */
-    public const HTTP_CONFLICT = 409;
+    public const CONFLICT = 409;
 
     /**
      * The 410 (Gone) status code indicates that access to the target resource
@@ -399,19 +396,18 @@ interface HttpStatusInterface
      * @see self::HTTP_NOT_FOUND
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-410-gone
      */
-    public const HTTP_GONE = 410;
+    public const GONE = 410;
 
-    // TODO add @see header
     /**
      * The 411 (Length Required) status code indicates that the server refuses
      * to accept the request without a defined Content-Length. The client MAY
      * repeat the request if it adds a valid Content-Length header
      * field containing the length of the request content.
      *
-     * @see
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::CONTENT_LENGTH
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-411-length-required
      */
-    public const HTTP_LENGTH_REQUIRED = 411;
+    public const LENGTH_REQUIRED = 411;
 
     /**
      * The 412 (Precondition Failed) status code indicates that one or more conditions
@@ -419,7 +415,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-412-precondition-failed
      */
-    public const HTTP_PRECONDITION_FAILED = 412;
+    public const PRECONDITION_FAILED = 412;
 
     /**
      * The 413 (Content Too Large) status code indicates that the server is refusing
@@ -428,7 +424,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-413-content-too-large
      */
-    public const HTTP_PAYLOAD_TOO_LARGE = 413;
+    public const PAYLOAD_TOO_LARGE = 413;
 
     /**
      * The 414 (URI Too Long) status code indicates that the server is refusing
@@ -441,7 +437,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-414-uri-too-long
      */
-    public const HTTP_URI_TOO_LONG = 414;
+    public const URI_TOO_LONG = 414;
 
     /**
      * The 415 (Unsupported Media Type) status code indicates that the origin server
@@ -450,30 +446,28 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-415-unsupported-media-type
      */
-    public const HTTP_UNSUPPORTED_MEDIA_TYPE = 415;
+    public const UNSUPPORTED_MEDIA_TYPE = 415;
 
-    // TODO add @see Range header field
     /**
      * The 416 (Range Not Satisfiable) status code indicates that the set of ranges
      * in the request's Range header field has been rejected either because none
      * of the requested ranges are satisfiable or because the client has requested
      * an excessive number of small or overlapping ranges (a potential DDoS Attack).
      *
-     * @see
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::RANGE
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-416-range-not-satisfiable
      */
-    public const HTTP_RANGE_NOT_SATISFIABLE = 416;
+    public const RANGE_NOT_SATISFIABLE = 416;
 
-    // TODO add @see Expect header
     /**
      * The 417 (Expectation Failed) status code indicates that the expectation given
      * in the request's Expect header field could not be met by at least one of the
      * inbound servers.
      *
-     * @see
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::EXPECT
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-417-expectation-failed
      */
-    public const HTTP_EXPECTATION_FAILED = 417;
+    public const EXPECTATION_FAILED = 417;
 
     /**
      * RFC2324 was an April 1 RFC that lampooned the various ways HTTP was abused;
@@ -485,7 +479,7 @@ interface HttpStatusInterface
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-418-unused
      * @see https://www.rfc-editor.org/rfc/rfc2324.html#section-2.3.2
      */
-    public const HTTP_IM_A_TEAPOT = 418;
+    public const IM_A_TEAPOT = 418;
 
     /**
      * The 421 (Misdirected Request) status code indicates that the request was
@@ -494,7 +488,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-421-misdirected-request
      */
-    public const HTTP_MISDIRECTED_REQUEST = 421;
+    public const MISDIRECTED_REQUEST = 421;
 
     /**
      * The 422 (Unprocessable Content) status code indicates that the server
@@ -504,7 +498,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-422-unprocessable-content
      */
-    public const HTTP_UNPROCESSABLE_ENTITY = 422;
+    public const UNPROCESSABLE_ENTITY = 422;
 
     /**
      * The 423 (Locked) status code means the source or destination resource
@@ -512,7 +506,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc4918#section-11.3
      */
-    public const HTTP_LOCKED = 423;
+    public const LOCKED = 423;
 
     /**
      * The 424 (Failed Dependency) status code means that the method could
@@ -521,7 +515,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc4918#section-11.4
      */
-    public const HTTP_FAILED_DEPENDENCY = 424;
+    public const FAILED_DEPENDENCY = 424;
 
     /**
      * A 425 (Too Early) status code indicates that the server is unwilling
@@ -529,19 +523,18 @@ interface HttpStatusInterface
      *
      * @see https://httpwg.org/specs/rfc8470.html#status
      */
-    public const HTTP_TOO_EARLY = 425;
+    public const TOO_EARLY = 425;
 
-    // TODO @see Upgrade header field
     /**
      * The 426 (Upgrade Required) status code indicates that the server refuses
      * to perform the request using the current protocol but might be willing
      * to do so after the client upgrades to a different protocol. The server
      * MUST send an Upgrade header field to indicate the required protocol(s).
      *
-     * @see
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::UPGRADE
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-426-upgrade-required
      */
-    public const HTTP_UPGRADE_REQUIRED = 426;
+    public const UPGRADE_REQUIRED = 426;
 
     /**
      * The 428 status code indicates that the origin server requires the
@@ -549,19 +542,18 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc6585#section-3
      */
-    public const HTTP_PRECONDITION_REQUIRED = 428;
+    public const PRECONDITION_REQUIRED = 428;
 
-    // TODO @see Retry-After header
     /**
      * The 429 status code indicates that the user has sent too many requests
      * in a given amount of time. The response representations SHOULD include
      * details explaining the condition, and MAY include a Retry-After header
      * indicating how long to wait before making a new request.
      *
-     * @see
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::RETRY_AFTER
      * @see https://www.rfc-editor.org/rfc/rfc6585#section-4
      */
-    public const HTTP_TOO_MANY_REQUESTS = 429;
+    public const TOO_MANY_REQUESTS = 429;
 
     /**
      * The 431 status code indicates that the server is unwilling to process
@@ -570,7 +562,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc6585#section-5
      */
-    public const HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE = 431;
+    public const REQUEST_HEADER_FIELDS_TOO_LARGE = 431;
 
     /**
      * This status code indicates that the server is denying access to the
@@ -580,7 +572,7 @@ interface HttpStatusInterface
      *
      * @see https://httpwg.org/specs/rfc7725.html#n-451-unavailable-for-legal-reasons
      */
-    public const HTTP_UNAVAILABLE_FOR_LEGAL_REASONS = 451;
+    public const UNAVAILABLE_FOR_LEGAL_REASONS = 451;
 
     // 5xx (Server Error): The server failed to fulfill an apparently valid request
     // ================================================================================
@@ -598,7 +590,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-500-internal-server-error
      */
-    public const HTTP_INTERNAL_SERVER_ERROR = 500;
+    public const INTERNAL_SERVER_ERROR = 500;
 
     /**
      * The 501 (Not Implemented) status code indicates that the server does not support
@@ -608,7 +600,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-501-not-implemented
      */
-    public const HTTP_NOT_IMPLEMENTED = 501;
+    public const NOT_IMPLEMENTED = 501;
 
     /**
      * The 502 (Bad Gateway) status code indicates that the server, while acting
@@ -617,9 +609,8 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-502-bad-gateway
      */
-    public const HTTP_BAD_GATEWAY = 502;
+    public const BAD_GATEWAY = 502;
 
-    // TODO @see Retry-After header field
     /**
      * The 503 (Service Unavailable) status code indicates that the server is
      * currently unable to handle the request due to a temporary overload or
@@ -627,10 +618,10 @@ interface HttpStatusInterface
      * The server MAY send a Retry-After header field to suggest an appropriate
      * amount of time for the client to wait before retrying the request.
      *
-     * @see
+     * @see \Web\Utils\Http\Abstract\Header\HttpHeaderInterface::RETRY_AFTER
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-503-service-unavailable
      */
-    public const HTTP_SERVICE_UNAVAILABLE = 503;
+    public const SERVICE_UNAVAILABLE = 503;
 
     /**
      * The 504 (Gateway Timeout) status code indicates that the server, while acting
@@ -639,7 +630,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-504-gateway-timeout
      */
-    public const HTTP_GATEWAY_TIMEOUT = 504;
+    public const GATEWAY_TIMEOUT = 504;
 
     /**
      * The 505 (HTTP Version Not Supported) status code indicates that the server
@@ -648,7 +639,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-505-http-version-not-suppor
      */
-    public const HTTP_HTTP_VERSION_NOT_SUPPORTED = 505;
+    public const HTTP_VERSION_NOT_SUPPORTED = 505;
 
     /**
      * The 506 status code indicates that the server has an internal
@@ -658,7 +649,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc2295#section-8.1
      */
-    public const HTTP_VARIANT_ALSO_NEGOTIATES = 506;
+    public const VARIANT_ALSO_NEGOTIATES = 506;
 
     /**
      * The 507 (Insufficient Storage) status code means the method could not
@@ -671,7 +662,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc4918#section-11.5
      */
-    public const HTTP_INSUFFICIENT_STORAGE = 507;
+    public const INSUFFICIENT_STORAGE = 507;
 
     /**
      * The 508 (Loop Detected) status code indicates that the server
@@ -681,7 +672,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc5842#section-7.2
      */
-    public const HTTP_LOOP_DETECTED = 508;
+    public const LOOP_DETECTED = 508;
 
     /**
      * The policy for accessing the resource has not been met in the
@@ -690,7 +681,7 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc2774#section-7
      */
-    public const HTTP_NOT_EXTENDED = 510;
+    public const NOT_EXTENDED = 510;
 
     /**
      * The 511 status code indicates that the client needs to authenticate
@@ -698,5 +689,5 @@ interface HttpStatusInterface
      *
      * @see https://www.rfc-editor.org/rfc/rfc6585#section-6
      */
-    public const HTTP_NETWORK_AUTHENTICATION_REQUIRED = 511;
+    public const NETWORK_AUTHENTICATION_REQUIRED = 511;
 }
