@@ -31,8 +31,8 @@ static:
 
 test:
 	$(MK) $(DIR_TEST)
-	$(CD) $(DIR_TOOL) && XDEBUG_MODE=coverage $(DIR_BIN)phpunit --coverage-text
-	
+	$(CD) $(DIR_TOOL) && XDEBUG_MODE=coverage $(DIR_BIN)phpunit
+
 docker:
 	docker compose --file $(DOCKER_COMPOSE) up --build --detach
 	docker exec -it $(DOCKER_CONTAINER) sh
@@ -46,7 +46,7 @@ clean:
 
 # Documentation
 # To include your local config files for tools, place them
-# under the $(DIR_TOOL) directory. The local config files 
+# under the $(DIR_TOOL) directory. The local config files
 # will be loaded instead of $(DIR_TOOL)*.dist config files.
 # For example, $(DIR_TOOL)/phpstan.neon will take precedence
 # over $(DIR_TOOL)/phpstan.neon.dist

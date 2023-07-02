@@ -26,23 +26,29 @@ interface MediaTypeExtensionInterface
     public function getFileExtension(): string;
 
     /**
-     * Creates a new instance based on provided file extension.
+     * Creates a new instance based on provided file path's extension.
      *
-     * @param string $extension the file extension
+     * This method operates naively on the input string,
+     * and is not aware of the actual filesystem.
+     *
+     * @param string $path file path containing extension
      *
      * @return static new instance
      *
      * @throws \Web\Utils\Http\Exception\UnsupportedExtensionException
      */
-    public static function fromFileExtension(string $extension): static;
+    public static function fromFilePath(string $path): static;
 
     /**
-     * Tries to create a new instance based on provided file extension.
+     * Tries to create a new instance based on provided file path's extension.
      * Returns null if the creation fails.
      *
-     * @param string $extension the file extension
+     * This method operates naively on the input string,
+     * and is not aware of the actual filesystem.
+     *
+     * @param string $path file path containing extension
      *
      * @return ?static new instance, or null on unsupported/ambiguous extension
      */
-    public static function tryFromFileExtension(string $extension): ?static;
+    public static function tryFromFilePath(string $path): ?static;
 }

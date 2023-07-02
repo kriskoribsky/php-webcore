@@ -13,6 +13,14 @@ parameters:
     paths:
         - ../src
 
+    ignoreErrors:
+        -
+            message: '#Dynamic call to static method PHPUnit\\Framework\\.*#'
+            path: ../src/*/Test/*
+        -
+            message: '#Call to method PHPUnit\\Framework\\Assert::.* will always evaluate to true.#'
+            path: ../src/*/Test/*
+
 includes:
     - phar://phpstan.phar/conf/bleedingEdge.neon
     - ../vendor/phpstan/phpstan-strict-rules/rules.neon

@@ -11,16 +11,12 @@
 
 namespace Web\Utils\Http\Concrete;
 
-use Web\Utils\Http\Abstract\Method\HttpMethodInterface;
-use Web\Utils\Http\Abstract\Method\HttpMethodSafetyInterface;
-use Web\Utils\Http\Abstract\Method\HttpMethodSafetyTrait;
+use Web\Utils\Http\Abstract\Header\HttpHeaderInterface;
 
-class HttpMethod implements HttpMethodInterface, HttpMethodSafetyInterface
+class HttpHeader implements HttpHeaderInterface
 {
-    use HttpMethodSafetyTrait;
-
     /**
-     * @param string $value HTTP method value
+     * @param string $value HTTP header value
      */
     public function __construct(
         public readonly string $value

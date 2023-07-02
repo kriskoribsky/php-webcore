@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-$dirRoot = \realpath(__DIR__.\DIRECTORY_SEPARATOR.'..'.\DIRECTORY_SEPARATOR);
-$dirSrc = $dirRoot.\DIRECTORY_SEPARATOR.'src';
-$dirCache = $dirRoot.\DIRECTORY_SEPARATOR.'tmp'.\DIRECTORY_SEPARATOR.'formatters'.\DIRECTORY_SEPARATOR.'.php-cs-fixer.cache';
+$dirRoot = \realpath(__DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR);
+$dirSrc = $dirRoot . \DIRECTORY_SEPARATOR . 'src';
+$dirCache = $dirRoot . \DIRECTORY_SEPARATOR . 'tmp' . \DIRECTORY_SEPARATOR . 'formatters' . \DIRECTORY_SEPARATOR . '.php-cs-fixer.cache';
 
 $header = <<<'EOF'
     This file is part of the Webutils package.
@@ -133,7 +133,7 @@ $rules = [
     'single_line_comment_style' => true,
 
     // Constant Notation
-    'native_constant_invocation' => true,
+    'native_constant_invocation' => ['fix_built_in' => true, 'include' => ['DIRECTORY_SEPARATOR', 'PHP_INT_SIZE', 'PHP_SAPI', 'PHP_VERSION_ID'], 'scope' => 'all', 'strict' => true],
 
     // Control Structure
     'control_structure_braces' => true,
@@ -254,7 +254,7 @@ $rules = [
 
     // PHPUnit
     'php_unit_construct' => true,
-    'php_unit_data_provider_name' => true,
+    'php_unit_data_provider_name' => ['prefix' => 'provide', 'suffix' => 'Cases'],
     'php_unit_data_provider_static' => ['force' => true],
     'php_unit_dedicate_assert' => true,
     'php_unit_dedicate_assert_internal_type' => true,
@@ -270,7 +270,7 @@ $rules = [
     'php_unit_size_class' => true,
     'php_unit_strict' => true,
     'php_unit_test_annotation' => true,
-    'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
+    'php_unit_test_case_static_method_calls' => ['call_type' => 'this'],
     'php_unit_test_class_requires_covers' => true,
 
     // PHPDoc

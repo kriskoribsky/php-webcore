@@ -11,18 +11,18 @@
 
 namespace Web\Utils\Http\Concrete;
 
-use Web\Utils\Http\Abstract\Method\HttpMethodInterface;
-use Web\Utils\Http\Abstract\Method\HttpMethodSafetyInterface;
-use Web\Utils\Http\Abstract\Method\HttpMethodSafetyTrait;
+use Web\Utils\Http\Abstract\Status\HttpStatusClassInterface;
+use Web\Utils\Http\Abstract\Status\HttpStatusClassTrait;
+use Web\Utils\Http\Abstract\Status\HttpStatusInterface;
 
-class HttpMethod implements HttpMethodInterface, HttpMethodSafetyInterface
+class HttpStatus implements HttpStatusClassInterface, HttpStatusInterface
 {
-    use HttpMethodSafetyTrait;
+    use HttpStatusClassTrait;
 
     /**
-     * @param string $value HTTP method value
+     * @param int $value HTTP status value
      */
     public function __construct(
-        public readonly string $value
+        public readonly int $value
     ) {}
 }

@@ -3,12 +3,13 @@
     backupGlobals="false"
     backupStaticProperties="false"
     bootstrap="../vendor/autoload.php"
-    cacheDirectory="../tmp/testers/"
     cacheResult="true"
+    cacheDirectory="../tmp/testers/"
+    cacheResultFile="../tmp/testers/.phpunit.result.cache"
     colors="true"
     columns="80"
     requireCoverageMetadata="true"
-    processIsolation="true"
+    processIsolation="false"
     stopOnError="true"
     stopOnFailure="true"
     stopOnWarning="false"
@@ -38,7 +39,7 @@
     registerMockObjectsFromTestArgumentsRecursively="false"
     executionOrder="default"
     resolveDependencies="true"
-    testdox="false"
+    testdox="true"
     displayDetailsOnIncompleteTests="true"
     displayDetailsOnSkippedTests="true"
     displayDetailsOnTestsThatTriggerDeprecations="true"
@@ -55,13 +56,13 @@
             <directory suffix=".php">../src/</directory>
         </include>
         <exclude>
-            <directory suffix=".php">../src/*/Tests/</directory>
+            <directory suffix=".php">../src/*/Test/</directory>
         </exclude>
     </source>
 
     <testsuites>
         <testsuite name="Webutils Unit">
-            <directory phpVersion="8.2.7" prefix="Test" suffix=".php">../src/*/Tests/</directory>
+            <directory phpVersion="8.2.7" suffix="Test.php">../src/*/Test/</directory>
         </testsuite>
 
         <testsuite name="Webutils Integration">

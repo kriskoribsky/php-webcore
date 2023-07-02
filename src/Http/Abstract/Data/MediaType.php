@@ -477,31 +477,33 @@ enum MediaType: string implements MediaTypeExtensionInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromFileExtension(string $extension): static
+    public static function fromFilePath(string $path): static
     {
-        $extension = \trim($extension);
+        $path = \trim($path, ". \n\r\t\v\x00");
 
-        if ( ! \str_starts_with($extension, '.')) {
-            $extension = '.' . $extension;
+        // add '.' if $path doesn't contain any to recognize standalone extensions
+        if ( ! \str_contains($path, '.')) {
+            $path = '.' . $path;
         }
 
-        $result = \array_search($extension, self::MEDIA_TYPE_EXTENSIONS, true);
+        $ext = \pathinfo($path, \PATHINFO_EXTENSION);
+
+        $result = \array_search($ext, self::MEDIA_TYPE_EXTENSIONS, true);
 
         if ($result === false) {
             throw new UnsupportedExtensionException('Extension is not supported.');
         }
 
-        // @phpstan-ignore-next-line
-        return self::tryFrom($result) ?? throw new UnsupportedExtensionException('Extension recognized, but media type is missing.');
+        return self::from($result);
     }
 
     /**
      * {@inheritDoc}
      */
-    public static function tryFromFileExtension(string $extension): ?static
+    public static function tryFromFilePath(string $path): ?static
     {
         try {
-            $result = self::fromFileExtension($extension);
+            $result = self::fromFilePath($path);
         } catch (UnsupportedExtensionException) {
             return null;
         }

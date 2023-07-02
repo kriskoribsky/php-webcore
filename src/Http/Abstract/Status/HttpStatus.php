@@ -18,8 +18,9 @@ use Web\Utils\Http\Exception\UnrecognizedReasonPhraseException;
  *
  * @see HttpStatusInterface
  */
-enum HttpStatus: int implements HttpStatusReasonPhraseInterface
+enum HttpStatus: int implements HttpStatusClassInterface, HttpStatusReasonPhraseInterface
 {
+    use HttpStatusClassTrait;
     use HttpStatusReasonPhraseTrait;
 
     // 1xx (Informational): The request was received, continuing process

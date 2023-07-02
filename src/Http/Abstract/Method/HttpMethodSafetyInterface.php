@@ -12,7 +12,7 @@
 namespace Web\Utils\Http\Abstract\Method;
 
 /**
- * Provides the ability for HttpMethod to semantically categorize
+ * Provides the ability to semantically categorize
  * HTTP methods according to RFC 9110 HTTP Semantics.
  *
  * @see https://www.rfc-editor.org/rfc/rfc9110.html#name-common-method-properties
