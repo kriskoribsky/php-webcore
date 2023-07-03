@@ -25,7 +25,6 @@ use Web\Utils\Http\Exception\UnsupportedExtensionException;
 final class MediaTypeTest extends TestCase
 {
     // Tests
-    // ================================================================================
     /**
      * @testdox Media type $case has valid extension
      *
@@ -129,7 +128,6 @@ final class MediaTypeTest extends TestCase
     }
 
     // Data providers
-    // ================================================================================
     /**
      * @return iterable<iterable<MediaType>>
      */

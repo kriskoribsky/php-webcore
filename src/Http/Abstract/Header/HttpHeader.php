@@ -883,7 +883,7 @@ enum HttpHeader: string implements HttpHeaderFieldInterface
     {
         $header = \trim(\explode(':', $field, 2)[0]);
 
-        return self::tryFrom($header) ?? throw new UnsupportedHeaderException('Header key not supported.');
+        return self::tryFrom($header) ?? throw new UnsupportedHeaderException("Header name '{$header}' not supported.");
     }
 
     /**
