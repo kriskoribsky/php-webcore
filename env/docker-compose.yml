@@ -4,8 +4,8 @@ services:
     container_name: webutils-phpcli
     build:
       context: .
-      dockerfile: phpcli-composer.Dockerfile
+      dockerfile: Dockerfile
     volumes:
-      - ../:/webutils-php/
+      - ../:/volume/
     stdin_open: true
     tty: true
