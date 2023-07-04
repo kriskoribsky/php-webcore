@@ -9,28 +9,28 @@
  * file that was distributed with this source code.
  */
 
-namespace Web\Utils\Http\Test\Abstract\Data;
+namespace Web\Utils\Http\Test\Abstract\Header;
 
 use PHPUnit\Framework\TestCase;
-use Web\Utils\Http\Abstract\Data\MediaType;
-use Web\Utils\Http\Abstract\Data\MediaTypeInterface;
+use Web\Utils\Http\Abstract\Header\HttpHeader;
+use Web\Utils\Http\Abstract\Header\HttpHeaderInterface;
 
 /**
  * @internal
  *
- * @covers \Web\Utils\Http\Abstract\Data\MediaType
+ * @covers \Web\Utils\Http\Abstract\Header\HttpHeader
  *
  * @small
  */
-final class MediaTypeEnumInterfaceConsistencyTest extends TestCase
+final class HttpHeaderEnumInterfaceConsistencyTest extends TestCase
 {
     // Tests
     public function testEnumCasesIdenticalToInterfaceConstants(): void
     {
-        $interfaceConstants = (new \ReflectionClass(MediaTypeInterface::class))->getConstants();
+        $interfaceConstants = (new \ReflectionClass(HttpHeaderInterface::class))->getConstants();
 
-        $enumNames = \array_column(MediaType::cases(), 'name');
-        $enumValues = \array_column(MediaType::cases(), 'value');
+        $enumNames = \array_column(HttpHeader::cases(), 'name');
+        $enumValues = \array_column(HttpHeader::cases(), 'value');
         $enumCases = \array_combine($enumNames, $enumValues);
 
         $this->assertEqualsCanonicalizing($interfaceConstants, $enumCases);

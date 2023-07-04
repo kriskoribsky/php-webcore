@@ -491,7 +491,7 @@ enum MediaType: string implements MediaTypeExtensionInterface
         $result = \array_search($ext, self::MEDIA_TYPE_EXTENSIONS, true);
 
         if ($result === false) {
-            throw new UnsupportedExtensionException('Extension is not supported.');
+            throw new UnsupportedExtensionException("Extension '{$ext}' not found.");
         }
 
         return self::from($result);

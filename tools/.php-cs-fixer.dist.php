@@ -254,7 +254,8 @@ $rules = [
 
     // PHPUnit
     'php_unit_construct' => true,
-    'php_unit_data_provider_name' => ['prefix' => 'provide', 'suffix' => 'Cases'],
+    // 'php_unit_data_provider_name' => ['prefix' => 'provide', 'suffix' => 'Cases'],
+    'php_unit_data_provider_name' => false,
     'php_unit_data_provider_static' => ['force' => true],
     'php_unit_dedicate_assert' => true,
     'php_unit_dedicate_assert_internal_type' => true,

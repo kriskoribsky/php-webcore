@@ -25,12 +25,13 @@ use Web\Utils\Http\Exception\UnsupportedExtensionException;
 final class MediaTypeTest extends TestCase
 {
     // Tests
+
     /**
      * @testdox Media type $case has valid extension
      *
-     * @dataProvider provideGetFileExtensionNeverReturnsNullCases
+     * @dataProvider provideAllEnumCases
      */
-    public function testGetFileExtensionNeverReturnsNull(MediaType $case): void
+    public function testGetFileExtensionIsAvailableForAllMediaTypes(MediaType $case): void
     {
         $this->assertNotNull($case->getFileExtension());
     }
@@ -38,9 +39,9 @@ final class MediaTypeTest extends TestCase
     /**
      * @testdox Media type $case extension does not start with '.'
      *
-     * @depends testGetFileExtensionNeverReturnsNull
+     * @depends testGetFileExtensionIsAvailableForAllMediaTypes
      *
-     * @dataProvider provideGetFileExtensionDoesNotContainDotCases
+     * @dataProvider provideAllEnumCases
      */
     public function testGetFileExtensionDoesNotContainDot(MediaType $case): void
     {
@@ -48,17 +49,17 @@ final class MediaTypeTest extends TestCase
     }
 
     /**
-     * @depends testGetFileExtensionNeverReturnsNull
+     * @depends testGetFileExtensionIsAvailableForAllMediaTypes
      */
-    public function testfromFilePathWorksWithValidPath(): void
+    public function testfromFilePathReturnsInstanceOnValidPath(): void
     {
         $this->assertSame(MediaType::APPLICATION_PHP_X, MediaType::fromFilePath(__FILE__));
     }
 
     /**
-     * @depends testGetFileExtensionNeverReturnsNull
+     * @depends testGetFileExtensionIsAvailableForAllMediaTypes
      */
-    public function testfromFilePathWorksWithJustExtension(): void
+    public function testfromFilePathReturnsInstanceOnExtension(): void
     {
         $old = MediaType::TEXT_JAVASCRIPT;
         $path = $old->getFileExtension();
@@ -69,10 +70,10 @@ final class MediaTypeTest extends TestCase
     }
 
     /**
-     * @depends testGetFileExtensionNeverReturnsNull
+     * @depends testGetFileExtensionIsAvailableForAllMediaTypes
      * @depends testGetFileExtensionDoesNotContainDot
      */
-    public function testfromFilePathWorksWithoutLeadingDotAndWithWhitespace(): void
+    public function testfromFilePathReturnsInstanceOnLeadingDotAndWhitespace(): void
     {
         $old = MediaType::TEXT_JAVASCRIPT;
         $path = "\t      \t \n  " . $old->getFileExtension() . "\t  \v  \r";
@@ -83,9 +84,9 @@ final class MediaTypeTest extends TestCase
     }
 
     /**
-     * @depends testGetFileExtensionNeverReturnsNull
+     * @depends testGetFileExtensionIsAvailableForAllMediaTypes
      */
-    public function testfromFilePathWorksWithInvalidDirectoryFormat(): void
+    public function testfromFilePathReturnsInstanceOnInvalidDirectoryFormat(): void
     {
         $old = MediaType::TEXT_JAVASCRIPT;
         $path = "\r\trandom/file\\path" . \DIRECTORY_SEPARATOR . "\nrandom_file\tfile." . $old->getFileExtension();
@@ -96,7 +97,7 @@ final class MediaTypeTest extends TestCase
     }
 
     /**
-     * @depends testGetFileExtensionNeverReturnsNull
+     * @depends testGetFileExtensionIsAvailableForAllMediaTypes
      */
     public function testfromFilePathThrowsExceptionOnPathWithoutExtension(): void
     {
@@ -107,7 +108,7 @@ final class MediaTypeTest extends TestCase
     }
 
     /**
-     * @depends testGetFileExtensionNeverReturnsNull
+     * @depends testGetFileExtensionIsAvailableForAllMediaTypes
      */
     public function testfromFilePathThrowsExceptionOnInvalidExtensionFormat(): void
     {
@@ -128,28 +129,11 @@ final class MediaTypeTest extends TestCase
     }
 
     // Data providers
-    /**
-     * @return iterable<iterable<MediaType>>
-     */
-    public static function provideGetFileExtensionNeverReturnsNullCases(): iterable
-    {
-        return self::provideAllEnumCases();
-    }
 
     /**
      * @return iterable<iterable<MediaType>>
      */
-    public static function provideGetFileExtensionDoesNotContainDotCases(): iterable
-    {
-        return self::provideAllEnumCases();
-    }
-
-    /**
-     * @internal
-     *
-     * @return iterable<iterable<MediaType>>
-     */
-    private static function provideAllEnumCases(): iterable
+    public static function provideAllEnumCases(): iterable
     {
         $cases = MediaType::cases();
         $result = [];

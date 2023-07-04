@@ -703,14 +703,13 @@ enum HttpStatus: int implements HttpStatusClassInterface, HttpStatusReasonPhrase
     /**
      * {@inheritDoc}
      */
-    public function fromReasonPhrase(string $phrase): static
+    public static function fromReasonPhrase(string $phrase): static
     {
         $phrase = \trim($phrase);
 
         foreach (self::REASON_PHRASES as $key => $value) {
             if (\strcasecmp($phrase, $value) === 0) {
-                // @phpstan-ignore-next-line
-                return self::tryFrom($key) ?? throw new UnrecognizedReasonPhraseException("Reason phrase '{$phrase}' found, but the implementation doesn't provide an equivalent status code.");
+                return self::from($key);
             }
         }
 
@@ -720,7 +719,7 @@ enum HttpStatus: int implements HttpStatusClassInterface, HttpStatusReasonPhrase
     /**
      * {@inheritDoc}
      */
-    public function tryFromReasonPhrase(string $phrase): ?static
+    public static function tryFromReasonPhrase(string $phrase): ?static
     {
         try {
             $result = self::fromReasonPhrase($phrase);

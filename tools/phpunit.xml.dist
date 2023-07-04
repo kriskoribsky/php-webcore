@@ -29,7 +29,7 @@
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutCoverageMetadata="true"
-    enforceTimeLimit="false"
+    enforceTimeLimit="true"
     defaultTimeLimit="1"
     timeoutForSmallTests="1"
     timeoutForMediumTests="10"

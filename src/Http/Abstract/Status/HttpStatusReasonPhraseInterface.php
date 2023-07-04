@@ -34,7 +34,7 @@ interface HttpStatusReasonPhraseInterface
      *
      * @throws \Web\Utils\Http\Exception\UnrecognizedReasonPhraseException
      */
-    public function fromReasonPhrase(string $phrase): static;
+    public static function fromReasonPhrase(string $phrase): static;
 
     /**
      * Tries to create a new instance based on provided reason phrase.
@@ -44,5 +44,5 @@ interface HttpStatusReasonPhraseInterface
      *
      * @return ?static new instance, or null when reason phrase was not recognized
      */
-    public function tryFromReasonPhrase(string $phrase): ?static;
+    public static function tryFromReasonPhrase(string $phrase): ?static;
 }
