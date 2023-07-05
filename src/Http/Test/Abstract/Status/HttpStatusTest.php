@@ -65,6 +65,19 @@ final class HttpStatusTest extends TestCase
     /**
      * @depends testGetReasonPhraseIsAvailableForAllHttpStatuses
      */
+    public function testFromReasonPhraseReturnsInstanceOnCaseInsensitiveReasonPhrase(): void
+    {
+        $old = HttpStatus::ACCEPTED;
+        $phrase = \strtoupper($old->getReasonPhrase());
+
+        $new = HttpStatus::fromReasonPhrase($phrase);
+
+        $this->assertSame($old, $new);
+    }
+
+    /**
+     * @depends testGetReasonPhraseIsAvailableForAllHttpStatuses
+     */
     public function testFromReasonPhraseThrowsExceptionOnInvalidReasonPhrase(): void
     {
         $old = HttpStatus::ACCEPTED;
@@ -90,12 +103,83 @@ final class HttpStatusTest extends TestCase
     /**
      * @depends testGetReasonPhraseIsAvailableForAllHttpStatuses
      */
+    public function testTryFromReasonPhraseReturnsInstanceOnWhitespacedReasonPhrase(): void
+    {
+        $old = HttpStatus::NOT_FOUND;
+        $phrase = "\n\n\n\r\v           " . $old->getReasonPhrase() . "             \r \t\t";
+
+        $new = HttpStatus::tryFromReasonPhrase($phrase);
+
+        $this->assertSame($old, $new);
+    }
+
+    /**
+     * @depends testGetReasonPhraseIsAvailableForAllHttpStatuses
+     */
+    public function testTryFromReasonPhraseReturnsInstanceOnCaseInsensitiveReasonPhrase(): void
+    {
+        $old = HttpStatus::NOT_FOUND;
+        $phrase = \strtoupper($old->getReasonPhrase());
+
+        $new = HttpStatus::tryFromReasonPhrase($phrase);
+
+        $this->assertSame($old, $new);
+    }
+
+    /**
+     * @depends testGetReasonPhraseIsAvailableForAllHttpStatuses
+     */
     public function testTryFromReasonPhraseReturnsNullOnInvalidReasonPhrase(): void
     {
         $old = HttpStatus::NOT_FOUND;
         $phrase = 'wrong prefix typo' . $old->getReasonPhrase();
 
         $this->assertNull(HttpStatus::tryFromReasonPhrase($phrase));
+    }
+
+    public function testIsInformationalReturnsTrueOn100StatusCode(): void
+    {
+        $this->assertTrue(HttpStatus::from(100)->isInformational());
+    }
+
+    public function testIsInformationalReturnsFalseOn200StatusCode(): void
+    {
+        $this->assertFalse(HttpStatus::from(200)->isInformational());
+    }
+
+    public function testIsSuccessfulReturnsTrueOn200StatusCode(): void
+    {
+        $this->assertTrue(HttpStatus::from(200)->isSuccessful());
+    }
+
+    public function testIsSuccessfulReturnsFalseOn300StatusCode(): void
+    {
+        $this->assertFalse(HttpStatus::from(300)->isSuccessful());
+    }
+
+    public function testIsRedirectionReturnsTrueOn300StatusCode(): void
+    {
+        $this->assertTrue(HttpStatus::from(300)->isRedirection());
+    }
+
+    public function testIsRedirectionReturnsFalseOn400StatusCode(): void
+    {
+        $this->assertFalse(HttpStatus::from(400)->isRedirection());
+    }
+
+    public function testIsClientErrorReturnsTrueOn400StatusCode(): void
+    {
+        $this->assertTrue(HttpStatus::from(400)->isClientError());
+    }
+
+    public function testIsClientErrorReturnsFalseOn500StatusCode(): void
+    {
+        $this->assertFalse(HttpStatus::from(500)->isClientError());
+    }
+
+    public function testIsServerErrorReturnsTrueOn500StatusCode(): void
+    {
+        $this->assertTrue(HttpStatus::from(500)->isServerError());
     }
 
     // Data providers
