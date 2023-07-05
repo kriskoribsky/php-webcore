@@ -1,0 +1,31 @@
+name: unit test
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  linux_static:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          coverage: xdebug
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install composer packages
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 5
+          max_attempts: 4
+          command: composer update --prefer-stable --prefer-dist --no-interaction --no-progress
+
+      - name: Execute test
+        run: make test
