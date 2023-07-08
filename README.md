@@ -19,14 +19,14 @@ Features:
 
 `composer require kriskoribsky/webutils`
 
-## Usage
+## Basic usage
 
 Every utility is namespaced under the `Web\Utils` namespace.
 
 ## Documentation
 
--   Core Concepts
--   Util Reference
+-   Usage
+-   Reference
 -   Examples
 
 ## Contributing
@@ -35,7 +35,8 @@ Thank you for considering contributing to this project!
 With more resources we could create large, general,  
 implementation-agnostic php repository of constants & utils.
 
-Please read the contributing guide.
+- Contributing guide
+- Contributing workflow
 
 ## Licence
 

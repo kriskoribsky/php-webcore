@@ -29,5 +29,3 @@ includes:
     - ../vendor/phpstan/phpstan-phpunit/rules.neon
     - ../vendor/slam/phpstan-extensions/conf/slam-rules.neon
     - ../vendor/slam/phpstan-extensions/conf/not-now-rules.neon
-    - ../vendor/struggle-for-php/sfp-phpstan-psr-log/extension.neon
-    - ../vendor/struggle-for-php/sfp-phpstan-psr-log/rules.neon
