@@ -16,7 +16,7 @@ use Web\Utils\Http\Abstract\Header\HttpHeaderInterface;
 class HttpHeader implements HttpHeaderInterface
 {
     /**
-     * @param string $value HTTP header value
+     * @param int $value HTTP header value
      */
     public function __construct(
         public readonly string $value
