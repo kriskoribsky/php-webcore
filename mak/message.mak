@@ -6,6 +6,7 @@
 # file that was distributed with this source code.
 
 MSG_INIT			= $(BOLD)$(BLUE)MAKEFILE: INIT$(RESET)
+MSG_FORMAT_CHECK	= $(BOLD)$(BLUE)MAKEFILE: FORMAT-CHECK$(RESET)
 MSG_FORMAT     		= $(BOLD)$(BLUE)MAKEFILE: FORMAT$(RESET)
 MSG_STATIC			= $(BOLD)$(BLUE)MAKEFILE: STATIC$(RESET)
 MSG_TEST			= $(BOLD)$(BLUE)MAKEFILE: TEST$(RESET)
@@ -20,6 +21,7 @@ $(BLUE)Host targets:$(RESET)
   init			Update dependencies and run interactive shell inside container
 
 $(BLUE)Container targets:$(RESET)
+  format-check  Check code formatting
   format		Run code formatter
   static		Perform static analysis
   test			Run tests

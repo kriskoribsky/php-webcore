@@ -28,4 +28,4 @@ jobs:
           command: composer update --prefer-stable --prefer-dist --no-interaction --no-progress
 
       - name: Execute format check
-        run: make static
+        run: make format-check

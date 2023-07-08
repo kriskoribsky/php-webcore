@@ -27,5 +27,5 @@ jobs:
           max_attempts: 4
           command: composer update --prefer-stable --prefer-dist --no-interaction --no-progress
 
-      - name: Execute test
+      - name: Execute unit tests
         run: make test

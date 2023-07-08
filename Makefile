@@ -22,13 +22,17 @@ DOCKER_VOLUME		:= /volume
 DOCKER_IMAGE		:= php-webutils
 
 # Targets
-all: format static test
-
 init:
 	$(info $(MSG_INIT))
 	docker build --tag $(DOCKER_IMAGE) $(DOCKER_CONTEXT)
 	docker run --rm --interactive --tty --volume $(DIR_ROOT):$(DOCKER_VOLUME) $(DOCKER_IMAGE) \
 		sh -c "composer update --prefer-stable --prefer-dist --no-interaction && sh"
+
+format-check:
+	$(info $(MSG_FORMAT_CHECK))
+	$(MK) $(DIR_FORMAT)
+	composer normalize --dry-run --diff --ansi
+	$(CD) $(DIR_TOOL) && $(DIR_BIN)php-cs-fixer fix --dry-run --diff --ansi
 
 format:
 	$(info $(MSG_FORMAT))
@@ -45,10 +49,12 @@ test:
 	$(MK) $(DIR_TEST)
 	$(CD) $(DIR_TOOL) && XDEBUG_MODE=coverage $(DIR_BIN)phpunit
 
+all: format static test
+
 clean:
 	$(info $(MSG_CLEAN))
 	$(ECHO) "$(GREEN)Removing $(DIR_TMP) ...$(RESET)"
 	$(RM) $(DIR_TMP)
 
 # Special
-.PHONY: init all docker composer format static test clean
+.PHONY: init format-check format static test all clean
