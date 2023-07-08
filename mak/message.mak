@@ -30,7 +30,7 @@ $(BLUE)Super targets:$(RESET)
   all			Run format, static, and test targets
 
 $(BLUE)Utility targets:$(RESET)
-  commit		Clean and commit changes to git
+  commit		Commit changes to git
   clean			Clean container artifacts
   help			Display this help message
 

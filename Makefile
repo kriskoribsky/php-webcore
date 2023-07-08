@@ -37,24 +37,24 @@ format-check:
 format:
 	$(info $(MSG_FORMAT))
 	$(MK) $(DIR_FORMAT)
-	composer normalize
-	$(CD) $(DIR_TOOL) && $(DIR_BIN)php-cs-fixer fix
+	composer normalize --ansi
+	$(CD) $(DIR_TOOL) && $(DIR_BIN)php-cs-fixer fix --ansi
 
 static:
 	$(info $(MSG_STATIC))
-	$(CD) $(DIR_TOOL) && $(DIR_BIN)phpstan analyse
+	$(CD) $(DIR_TOOL) && $(DIR_BIN)phpstan analyse --ansi
 
 test:
 	$(info $(MSG_TEST))
 	$(MK) $(DIR_TEST)
-	$(CD) $(DIR_TOOL) && XDEBUG_MODE=coverage $(DIR_BIN)phpunit
+	$(CD) $(DIR_TOOL) && XDEBUG_MODE=coverage $(DIR_BIN)phpunit --colors=always
 
 all: format static test
 
 clean:
 	$(info $(MSG_CLEAN))
 	$(ECHO) "$(GREEN)Removing $(DIR_TMP) ...$(RESET)"
-	sudo $(RM) $(DIR_TMP)
+	$(RM) $(DIR_TMP)
 
 # Special
 .PHONY: init format-check format static test all clean

@@ -8,7 +8,7 @@
 help:
 	$(info $(MSG_HELP))
 
-commit: clean
+commit:
 	$(info $(MSG_COMMIT))
 	$(COMMIT)
 
