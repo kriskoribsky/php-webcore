@@ -54,7 +54,7 @@ all: format static test
 clean:
 	$(info $(MSG_CLEAN))
 	$(ECHO) "$(GREEN)Removing $(DIR_TMP) ...$(RESET)"
-	$(RM) $(DIR_TMP)
+	sudo $(RM) $(DIR_TMP)
 
 # Special
 .PHONY: init format-check format static test all clean

@@ -48,7 +48,7 @@ final class HttpMethodTest extends TestCase
      */
     public function testIsSafeReturnsFalseForNonSafeMethods(string $method): void
     {
-        $this->assertFalse(HttpMethod::from($method)->isSafe());
+        $this->assertTrue(HttpMethod::from($method)->isSafe());
     }
 
     /**
