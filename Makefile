@@ -28,8 +28,8 @@ init:
 	docker run --rm --interactive --tty --volume $(DIR_ROOT):$(DOCKER_VOLUME) $(DOCKER_IMAGE) \
 		sh -c "composer update --prefer-stable --prefer-dist --no-interaction && sh"
 
-format-check:
-	$(info $(MSG_FORMAT_CHECK))
+check:
+	$(info $(MSG_CHECK))
 	$(MK) $(DIR_FORMAT)
 	composer normalize --dry-run --diff --ansi
 	$(CD) $(DIR_TOOL) && $(DIR_BIN)php-cs-fixer fix --dry-run --diff --ansi
@@ -57,4 +57,4 @@ clean:
 	$(RM) $(DIR_OUT)
 
 # Special
-.PHONY: init format-check format static test all clean
+.PHONY: init check format static test all clean

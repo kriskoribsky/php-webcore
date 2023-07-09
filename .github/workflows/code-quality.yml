@@ -28,7 +28,7 @@ jobs:
           command: composer update --prefer-stable --prefer-dist --no-interaction --no-progress --ansi
 
       - name: Execute format check
-        run: make format-check
+        run: make check
 
   static-analysis:
     needs: format-check

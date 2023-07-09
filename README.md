@@ -41,7 +41,7 @@ With more resources we could create large, general,
 implementation-agnostic php repository of constants & utils.
 
 -   Contributing guide
--   Contributing workflow
+-   [Development workflow](doc/dev.md)
 
 ## Licence
 
