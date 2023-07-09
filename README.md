@@ -1,5 +1,8 @@
 # Webutils
 
+[![Licence](https://img.shields.io/github/license/kriskoribsky/php-webutils?color=blue)](https://github.com/kriskoribsky/php-webutils/blob/main/LICENSE)
+[![Version](https://img.shields.io/packagist/v/kriskoribsky/webutils)](https://packagist.org/packages/kriskoribsky/webutils)
+
 Simple utility constants, functions and classes to use with other frameworks/implementations.  
 The primary aim of this package is to provide integrity and reduce bug-prone hardcoding of
 commonly used constants, while also providing methods for conversion and formatting.
@@ -35,8 +38,8 @@ Thank you for considering contributing to this project!
 With more resources we could create large, general,  
 implementation-agnostic php repository of constants & utils.
 
-- Contributing guide
-- Contributing workflow
+-   Contributing guide
+-   Contributing workflow
 
 ## Licence
 

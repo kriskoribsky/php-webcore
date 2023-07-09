@@ -6,7 +6,6 @@
   "keywords": [
     "utility",
     "constants",
-    "helpers",
     "psr-7",
     "psr-15",
     "psr-17",
@@ -49,6 +48,7 @@
       "ergebnis/composer-normalize": true
     },
     "lock": false,
-    "sort-packages": true
+    "sort-packages": true,
+    "platform-check": false
   }
 }
