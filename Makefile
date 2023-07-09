@@ -10,11 +10,11 @@ include mak/utils.mak
 DIR_BIN				:= $(DIR_ROOT)vendor/bin/
 DIR_SRC				:= $(DIR_ROOT)src/
 DIR_ENV				:= $(DIR_ROOT)env/
-DIR_TMP				:= $(DIR_ROOT)tmp/
+DIR_OUT				:= $(DIR_ROOT)out/
 DIR_TOOL			:= $(DIR_ROOT)tools/
 
-DIR_TEST			:= $(DIR_TMP)testers/
-DIR_FORMAT			:= $(DIR_TMP)formatters/
+DIR_TEST			:= $(DIR_OUT)testers/
+DIR_FORMAT			:= $(DIR_OUT)formatters/
 
 # Other
 DOCKER_CONTEXT		:= $(DIR_ENV)
@@ -53,8 +53,8 @@ all: format static test
 
 clean:
 	$(info $(MSG_CLEAN))
-	$(ECHO) "$(GREEN)Removing $(DIR_TMP) ...$(RESET)"
-	$(RM) $(DIR_TMP)
+	$(ECHO) "$(GREEN)Removing $(DIR_OUT) ...$(RESET)"
+	$(RM) $(DIR_OUT)
 
 # Special
 .PHONY: init format-check format static test all clean

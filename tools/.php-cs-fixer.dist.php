@@ -11,7 +11,7 @@
 
 $dirRoot = \realpath(__DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR);
 $dirSrc = $dirRoot . \DIRECTORY_SEPARATOR . 'src';
-$dirCache = $dirRoot . \DIRECTORY_SEPARATOR . 'tmp' . \DIRECTORY_SEPARATOR . 'formatters' . \DIRECTORY_SEPARATOR . '.php-cs-fixer.cache';
+$dirCache = $dirRoot . \DIRECTORY_SEPARATOR . 'out' . \DIRECTORY_SEPARATOR . 'formatters' . \DIRECTORY_SEPARATOR . '.php-cs-fixer.cache';
 
 $header = <<<'EOF'
     This file is part of the Webutils package.

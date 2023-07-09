@@ -4,8 +4,8 @@
     backupStaticProperties="false"
     bootstrap="../vendor/autoload.php"
     cacheResult="true"
-    cacheDirectory="../tmp/testers/"
-    cacheResultFile="../tmp/testers/.phpunit.result.cache"
+    cacheDirectory="../out/testers/"
+    cacheResultFile="../out/testers/.phpunit.result.cache"
     colors="true"
     columns="80"
     requireCoverageMetadata="true"
@@ -72,14 +72,20 @@
         </testsuite>
     </testsuites>
 
-    <coverage includeUncoveredFiles="true" pathCoverage="true" disableCodeCoverageIgnore="true">
+    <coverage
+        includeUncoveredFiles="true"
+        ignoreDeprecatedCodeUnits="false"
+        disableCodeCoverageIgnore="true"
+        pathCoverage="true"
+    >
         <report>
-            <html outputDirectory="../tmp/testers/coverage" lowUpperBound="50" highLowerBound="90" />
+            <html outputDirectory="../out/testers/coverage" lowUpperBound="50" highLowerBound="90" />
+            <clover outputFile="../out/testers/clover.xml" />
         </report>
     </coverage>
 
     <logging>
-        <testdoxText outputFile="../tmp/testers/testdox.txt" />
+        <testdoxText outputFile="../out/testers/testdox.txt" />
     </logging>
 
 </phpunit>
