@@ -80,7 +80,7 @@
     >
         <report>
             <html outputDirectory="../out/testers/coverage" lowUpperBound="50" highLowerBound="90" />
-            <clover outputFile="../out/testers/clover.xml" />
+            <clover outputFile="../out/testers/coverage.xml" />
         </report>
     </coverage>
 

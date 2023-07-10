@@ -4,6 +4,7 @@
 [![Packagist version](https://img.shields.io/packagist/v/kriskoribsky/webutils)](https://packagist.org/packages/kriskoribsky/webutils)
 [![PHP Version](https://img.shields.io/packagist/dependency-v/kriskoribsky/webutils/php?color=%234F5D95)](https://packagist.org/packages/kriskoribsky/webutils)
 [![CI Status](https://img.shields.io/github/actions/workflow/status/kriskoribsky/php-webutils/code-quality.yml)](https://github.com/kriskoribsky/php-webutils/actions)
+[![Code Coverage]()]()
 
 Simple utility constants, functions and classes to use with other frameworks/implementations.  
 The primary aim of this package is to provide integrity and reduce bug-prone hardcoding of
