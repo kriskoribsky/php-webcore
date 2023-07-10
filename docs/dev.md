@@ -1,6 +1,6 @@
 # Development
 
-## Workflow:
+## Workflow
 
 1. `make init`
 2. write code

@@ -3,8 +3,9 @@
 [![Github Licence](https://img.shields.io/github/license/kriskoribsky/php-webutils?color=blue)](https://github.com/kriskoribsky/php-webutils/blob/main/LICENSE)
 [![Packagist version](https://img.shields.io/packagist/v/kriskoribsky/webutils)](https://packagist.org/packages/kriskoribsky/webutils)
 [![PHP Version](https://img.shields.io/packagist/dependency-v/kriskoribsky/webutils/php?color=%234F5D95)](https://packagist.org/packages/kriskoribsky/webutils)
+[![Contribution status](https://img.shields.io/badge/contributions-welcome-brightgreen)](.github/CONTRIBUTING.md)
 [![CI Status](https://img.shields.io/github/actions/workflow/status/kriskoribsky/php-webutils/code-quality.yml)](https://github.com/kriskoribsky/php-webutils/actions)
-[![Code Coverage]()]()
+[![Code Coverage](https://img.shields.io/codecov/c/github/kriskoribsky/php-webutils)](https://app.codecov.io/gh/kriskoribsky/php-webutils)
 
 Simple utility constants, functions and classes to use with other frameworks/implementations.  
 The primary aim of this package is to provide integrity and reduce bug-prone hardcoding of
@@ -41,9 +42,9 @@ Thank you for considering contributing to this project!
 With more resources we could create large, general,  
 implementation-agnostic php repository of constants & utils.
 
--   Contributing guide
--   [Development workflow](doc/dev.md)
+-   [Contribution guide](.github/CONTRIBUTING.md)
+-   [Development workflow](docs/dev.md)
 
 ## Licence
 
-This library is open source, licensed under the [MIT license](LICENCE).
+This library is open source, licensed under the [MIT license](./LICENSE).

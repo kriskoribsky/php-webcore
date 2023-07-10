@@ -88,4 +88,3 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: out/testers/coverage.xml
           flags: unittests
-          verbose: true
