@@ -20,7 +20,8 @@
   ],
   "homepage": "https://github.com/kriskoribsky/php-webutils",
   "require": {
-    "php": "^8.2"
+    "php": "^8.2",
+    "psr/http-message": "^2.0"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.31",
@@ -48,7 +49,6 @@
       "ergebnis/composer-normalize": true
     },
     "lock": false,
-    "platform-check": false,
     "sort-packages": true
   }
 }
