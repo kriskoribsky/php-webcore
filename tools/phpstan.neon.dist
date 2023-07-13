@@ -1,0 +1,31 @@
+parameters:
+    level: max
+
+    reportUnmatchedIgnoredErrors: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    checkUninitializedProperties: true
+    checkImplicitMixed: true
+    checkBenevolentUnionTypes: true
+    reportAlwaysTrueInLastCondition: true
+    treatPhpDocTypesAsCertain: true
+    tipsOfTheDay: true
+
+    paths:
+        - ../src
+
+    ignoreErrors:
+        -
+            message: '#Dynamic call to static method PHPUnit\\Framework\\.*#'
+            path: ../src/*/Test/*
+        -
+            message: '#Call to method PHPUnit\\Framework\\Assert::.* will always evaluate to true.#'
+            path: ../src/*/Test/*
+
+includes:
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+    - ../vendor/phpstan/phpstan-strict-rules/rules.neon
+    - ../vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - ../vendor/phpstan/phpstan-phpunit/extension.neon
+    - ../vendor/phpstan/phpstan-phpunit/rules.neon
+    - ../vendor/slam/phpstan-extensions/conf/slam-rules.neon
+    - ../vendor/slam/phpstan-extensions/conf/not-now-rules.neon

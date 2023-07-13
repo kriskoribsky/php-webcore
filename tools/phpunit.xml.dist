@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    backupGlobals="false"
+    backupStaticProperties="false"
+    bootstrap="../vendor/autoload.php"
+    cacheResult="true"
+    cacheDirectory="../out/testers/"
+    cacheResultFile="../out/testers/.phpunit.result.cache"
+    colors="true"
+    columns="80"
+    requireCoverageMetadata="true"
+    processIsolation="false"
+    stopOnError="true"
+    stopOnFailure="true"
+    stopOnWarning="false"
+    stopOnRisky="false"
+    stopOnDeprecation="false"
+    stopOnNotice="false"
+    stopOnSkipped="false"
+    stopOnIncomplete="false"
+    failOnEmptyTestSuite="true"
+    failOnWarning="true"
+    failOnRisky="false"
+    failOnDeprecation="false"
+    failOnNotice="false"
+    failOnSkipped="false"
+    failOnIncomplete="false"
+    beStrictAboutChangesToGlobalState="true"
+    beStrictAboutOutputDuringTests="true"
+    beStrictAboutTestsThatDoNotTestAnything="true"
+    beStrictAboutCoverageMetadata="true"
+    enforceTimeLimit="true"
+    defaultTimeLimit="1"
+    timeoutForSmallTests="1"
+    timeoutForMediumTests="10"
+    timeoutForLargeTests="60"
+    stderr="false"
+    reverseDefectList="false"
+    registerMockObjectsFromTestArgumentsRecursively="false"
+    executionOrder="default"
+    resolveDependencies="true"
+    testdox="true"
+    displayDetailsOnIncompleteTests="true"
+    displayDetailsOnSkippedTests="true"
+    displayDetailsOnTestsThatTriggerDeprecations="true"
+    displayDetailsOnTestsThatTriggerErrors="true"
+    displayDetailsOnTestsThatTriggerNotices="true"
+    displayDetailsOnTestsThatTriggerWarnings="true"
+>
+    <php>
+        <env name="XDEBUG_MODE" value="coverage" />
+    </php>
+
+    <source>
+        <include>
+            <directory suffix=".php">../src/</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">../src/*/Test/</directory>
+        </exclude>
+    </source>
+
+    <testsuites>
+        <testsuite name="Webutils Unit">
+            <directory phpVersion="8.2.7" suffix="Test.php">../src/*/Test/</directory>
+        </testsuite>
+
+        <testsuite name="Webutils Integration">
+        </testsuite>
+
+        <testsuite name="Webutils End-to-end">
+        </testsuite>
+    </testsuites>
+
+    <coverage
+        includeUncoveredFiles="true"
+        ignoreDeprecatedCodeUnits="false"
+        disableCodeCoverageIgnore="true"
+        pathCoverage="true"
+    >
+        <report>
+            <html outputDirectory="../out/testers/coverage" lowUpperBound="50" highLowerBound="90" />
+            <clover outputFile="../out/testers/coverage.xml" />
+        </report>
+    </coverage>
+
+    <logging>
+        <testdoxText outputFile="../out/testers/testdox.txt" />
+    </logging>
+
+</phpunit>
