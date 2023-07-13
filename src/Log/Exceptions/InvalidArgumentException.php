@@ -9,9 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace Web\Utils\Uri\Concrete;
+namespace WebCore\Log\Exceptions;
 
-use Web\Utils\Uri\Abstract\AbstractUri;
-use Web\Utils\Uri\Abstract\UriInterface;
+use Psr\Log\InvalidArgumentException as InvalidArgumentExceptionPsr;
 
-final class Uri extends AbstractUri implements UriInterface {}
+class InvalidArgumentException extends InvalidArgumentExceptionPsr {}

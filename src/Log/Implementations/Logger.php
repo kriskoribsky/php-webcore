@@ -1,24 +1,33 @@
 <?php declare(strict_types=1);
 
+/*
+ * This file is part of the Webcore package.
+ *
+ * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WebCore\Log\Implementations;
 
+use Psr\Log\LoggerTrait;
+use WebCore\Log\Contracts\Handlers\Handler;
 use WebCore\Log\Contracts\Logger as LoggerContract;
 use WebCore\Log\Contracts\LogLevel;
 use WebCore\Log\Contracts\Processors\Processor;
-use WebCore\Log\Contracts\Handlers\Handler;
-
-use Psr\Log\LoggerTrait;
 
 final class Logger implements LoggerContract
 {
     use LoggerTrait;
 
     private array $processors;
+
     private array $handlers;
 
-    public function __construct(private string $channel)
-    {
-    }
+    public function __construct(
+        private readonly string $channel
+    ) {}
 
     public function log(mixed $level, string|\Stringable $message, array $context = []): void
     {
@@ -113,10 +122,9 @@ final class Logger implements LoggerContract
      * Processes the log message by the registered processors first, and then
      * sends it to the handlers for further changes and storage.
      *
-     * @param LogLevel $level The log level of the message
-     * @param string $message The log message
-     * @param array $context The contextual data associated with the log message
-     * @return void
+     * @param LogLevel $level   The log level of the message
+     * @param string   $message The log message
+     * @param array    $context The contextual data associated with the log message
      */
     private function send(LogLevel $level, string $message, array $context): void
     {

@@ -1,9 +1,18 @@
 <?php declare(strict_types=1);
 
+/*
+ * This file is part of the Webcore package.
+ *
+ * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WebCore\Log\Contracts\Handlers;
 
-use WebCore\Log\Contracts\LogRecord;
 use WebCore\Log\Contracts\LogLevel;
+use WebCore\Log\Contracts\LogRecord;
 
 /**
  * Abstract class providing default implementations
@@ -20,9 +29,19 @@ abstract class AbstractHandler implements Handler
     }
 
     /**
-     * @inheritDoc
+     * Destructor that automatically calls the close method.
+     *
+     * @throws \Throwable any exception or error that occurs during the close operation
      */
-    public function setLevel(mixed $level): self
+    public function __destruct()
+    {
+        $this->close();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    final public function setLevel(mixed $level): self
     {
         $this->level = LogLevel::fromMixed($level);
 
@@ -30,25 +49,25 @@ abstract class AbstractHandler implements Handler
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public function getLevel(): LogLevel
+    final public function getLevel(): LogLevel
     {
         return $this->level;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritDoc}
      */
-    public function handlesLevel(LogRecord $record): bool
+    final public function handlesLevel(LogRecord $record): bool
     {
         return $this->level->includes($record->level);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public function handleBatch(LogRecord ...$records): bool
+    final public function handleBatch(LogRecord ...$records): bool
     {
         $allSucess = true;
 
@@ -59,15 +78,5 @@ abstract class AbstractHandler implements Handler
         }
 
         return $allSucess;
-    }
-
-    /**
-     * Destructor that automatically calls the close method.
-     *
-     * @throws \Throwable any exception or error that occurs during the close operation
-     */
-    public function __destruct()
-    {
-        $this->close();
     }
 }

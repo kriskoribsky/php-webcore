@@ -1,11 +1,19 @@
 <?php declare(strict_types=1);
 
+/*
+ * This file is part of the Webcore package.
+ *
+ * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WebCore\Log\Implementations;
 
+use Psr\Log\LogLevel as LogLevelPsr;
 use WebCore\Log\Contracts\LogLevel as LogLevelContract;
 use WebCore\Log\Exceptions\InvalidArgumentException;
-
-use Psr\Log\LogLevel as LogLevelPsr;
 
 enum LogLevel: int implements LogLevelContract
 {
@@ -15,7 +23,7 @@ enum LogLevel: int implements LogLevelContract
     case EMERGENCY = 600;
 
     /**
-     * Action must be taken immediately
+     * Action must be taken immediately.
      *
      * Example: Entire website down, database unavailable, etc.
      * This should trigger the SMS alerts and wake you up.
@@ -23,19 +31,19 @@ enum LogLevel: int implements LogLevelContract
     case ALERT = 550;
 
     /**
-     * Critical conditions
+     * Critical conditions.
      *
      * Example: Application component unavailable, unexpected exception.
      */
     case CRITICAL = 500;
 
     /**
-     * Runtime errors
+     * Runtime errors.
      */
     case ERROR = 400;
 
     /**
-     * Exceptional occurrences that are not errors
+     * Exceptional occurrences that are not errors.
      *
      * Examples: Use of deprecated APIs, poor use of an API,
      * undesirable things that are not necessarily wrong.
@@ -43,19 +51,19 @@ enum LogLevel: int implements LogLevelContract
     case WARNING = 300;
 
     /**
-     * Uncommon events
+     * Uncommon events.
      */
     case NOTICE = 250;
 
     /**
-     * Interesting events
+     * Interesting events.
      *
      * Examples: User logs in, SQL logs.
      */
     case INFO = 200;
 
     /**
-     * Detailed debug information
+     * Detailed debug information.
      */
     case DEBUG = 100;
 
@@ -65,8 +73,6 @@ enum LogLevel: int implements LogLevelContract
      * This mapping is used internally to improve performance by associating each LogLevel
      * with its corresponding PSR-3 value. It allows for efficient conversion between the
      * framework-specific log levels and the PSR-3 log levels.
-     *
-     * @var array<int, string> The mapping of Framework LogLevel to PSR-3 value
      */
     private const PSR_MAP = [
         self::EMERGENCY => LogLevelPsr::EMERGENCY,
@@ -85,8 +91,6 @@ enum LogLevel: int implements LogLevelContract
      * This mapping is used internally to improve performance by associating each LogLevel
      * with its corresponding RFC5424 value. It allows for efficient conversion between the
      * framework-specific log levels and the RFC5424 log levels.
-     *
-     * @var array<int, int> The mapping of Framework LogLevel to RFC5424 value
      */
     private const RFC_MAP = [
         self::EMERGENCY => 0,
@@ -134,16 +138,16 @@ enum LogLevel: int implements LogLevelContract
         if ($level instanceof self) {
             return $level;
         }
-        if (is_string($level)) {
+
+        if (\is_string($level)) {
             return self::fromName($level);
         }
-        if (is_int($level)) {
+
+        if (\is_int($level)) {
             return self::fromValue($level);
         }
 
-        throw new InvalidArgumentException(
-            "'{$level}' is expected to be a string, int or " . self::class . ' instance)',
-        );
+        throw new InvalidArgumentException("'{$level}' is expected to be a string, int or " . self::class . ' instance)');
     }
 
     public function toName(): string
@@ -159,15 +163,15 @@ enum LogLevel: int implements LogLevelContract
     public function toPsrValue(): string
     {
         // REFACTOR add new type of custom exception?
-        return self::PSR_MAP[$this->toValue()] ??
-            throw new InvalidArgumentException("Enum case '{$this->toName()}' does not implement a PSR equivalent.");
+        return self::PSR_MAP[$this->toValue()]
+            ?? throw new InvalidArgumentException("Enum case '{$this->toName()}' does not implement a PSR equivalent.");
     }
 
     public function toRFC5424Value(): int
     {
         // REFACTOR add new type of custom exception?
-        return self::RFC_MAP[$this->toValue()] ??
-            throw new InvalidArgumentException("Enum case '{$this->toName()}' does not implement an RFC equivalent.");
+        return self::RFC_MAP[$this->toValue()]
+            ?? throw new InvalidArgumentException("Enum case '{$this->toName()}' does not implement an RFC equivalent.");
     }
 
     public function includes(LogLevelContract $level): bool

@@ -1,15 +1,22 @@
 <?php declare(strict_types=1);
 
+/*
+ * This file is part of the Webcore package.
+ *
+ * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WebCore\Log\Contracts;
 
-use WebCore\Log\Contracts\Processors\Processor;
-use WebCore\Log\Contracts\Handlers\Handler;
-use WebCore\Log\Contracts\Formatters\Formatter;
-use DateTimeZone;
 use Psr\Log\LoggerInterface;
+use WebCore\Log\Contracts\Handlers\Handler;
+use WebCore\Log\Contracts\Processors\Processor;
 
 /**
- * Interface that all Logger implementations must implement
+ * Interface that all Logger implementations must implement.
  */
 interface Logger extends LoggerInterface
 {
@@ -22,6 +29,7 @@ interface Logger extends LoggerInterface
      * Return a new cloned instance with the channel name changed.
      *
      * @param string $channel channel name of the new instance
+     *
      * @return self cloned instance of previous logger
      */
     public function withChannel(string $channel): self;
@@ -30,6 +38,7 @@ interface Logger extends LoggerInterface
      * Adds a processor on to the stack.
      *
      * @param Processor $processor the processor to push
+     *
      * @return self current logger intance
      */
     public function pushProcessor(Processor $processor): self;
@@ -38,6 +47,7 @@ interface Logger extends LoggerInterface
      * Removes the processor from top of the stack and returns it.
      *
      * @return Processor processor removed from the stack
+     *
      * @throws \LogicException if empty processor stack
      */
     public function popProcessor(): Processor;
@@ -46,6 +56,7 @@ interface Logger extends LoggerInterface
      * Set processors, replacing all existing ones.
      *
      * @param Processor $processors new processors to use
+     *
      * @return self current logger instance
      */
     public function setProcessors(Processor ...$processors): self;
@@ -61,6 +72,7 @@ interface Logger extends LoggerInterface
      * Pushes a handler on to the stack.
      *
      * @param Handler $handler the handler to push
+     *
      * @return self current logger instance
      */
     public function pushHandler(Handler $handler): self;
@@ -69,6 +81,7 @@ interface Logger extends LoggerInterface
      * Pops a handler from the stack.
      *
      * @return Handler handler removed from the stack
+     *
      * @throws \LogicException If empty handler stack
      */
     public function popHandler(): Handler;
@@ -77,6 +90,7 @@ interface Logger extends LoggerInterface
      * Set handlers, replacing all existing ones.
      *
      * @param Handler $handlers new handlers to use
+     *
      * @return self current logger instance
      */
     public function setHandlers(Handler ...$handlers): self;
@@ -92,7 +106,7 @@ interface Logger extends LoggerInterface
      * Ends a log cycle and frees all resources used by handlers.
      *
      * Closing a Handler means flushing all buffers and freeing any open resources/handles.
-
+     *
      * This is useful at the end of a request and will be called automatically on every handler
      * when they get destructed.
      */

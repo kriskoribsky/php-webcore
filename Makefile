@@ -19,7 +19,7 @@ DIR_FORMAT			:= $(DIR_OUT)formatters/
 # Other
 DOCKER_CONTEXT		:= $(DIR_ENV)
 DOCKER_VOLUME		:= /volume
-DOCKER_IMAGE		:= php-webutils
+DOCKER_IMAGE		:= php-webcore
 
 # Targets
 init:

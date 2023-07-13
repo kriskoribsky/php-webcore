@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Webutils package.
+ * This file is part of the Webcore package.
  *
  * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
  *
@@ -14,7 +14,7 @@ $dirSrc = $dirRoot . \DIRECTORY_SEPARATOR . 'src';
 $dirCache = $dirRoot . \DIRECTORY_SEPARATOR . 'out' . \DIRECTORY_SEPARATOR . 'formatters' . \DIRECTORY_SEPARATOR . '.php-cs-fixer.cache';
 
 $header = <<<'EOF'
-    This file is part of the Webutils package.
+    This file is part of the Webcore package.
 
     (c) Kristian Koribsky <kristian.koribsky@gmail.com>
 

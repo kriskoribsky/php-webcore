@@ -1,5 +1,14 @@
 <?php declare(strict_types=1);
 
+/*
+ * This file is part of the Webcore package.
+ *
+ * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WebCore\Log\Contracts;
 
 /**
@@ -12,7 +21,9 @@ interface LogLevel
      * Create using name.
      *
      * @param string $name the name of the log level
+     *
      * @return self the corresponding log level enum instance
+     *
      * @throws \WebCore\Log\Exceptions\InvalidArgumentException if name not one of the eight RFC 5424 levels
      */
     public static function fromName(string $name): self;
@@ -21,7 +32,9 @@ interface LogLevel
      * Create using number.
      *
      * @param int $value the value of the log level
+     *
      * @return self the corresponding log level enum instance
+     *
      * @throws \WebCore\Log\Exceptions\InvalidArgumentException if value not one of the eight enum levels
      */
     public static function fromValue(int $value): self;
@@ -30,7 +43,9 @@ interface LogLevel
      * Create a using a mixed value.
      *
      * @param mixed $level the mixed value representing the log level
+     *
      * @return self the corresponding log level enum instance
+     *
      * @throws \WebCore\Log\Exceptions\InvalidArgumentException if the mixed value is invalid or not supported
      */
     public static function fromMixed(mixed $level): self;
@@ -66,7 +81,8 @@ interface LogLevel
     /**
      * Checks if this log level is higher or equal to the given log level.
      *
-     * @param LogLevel $level The log level to compare
+     * @param self $level The log level to compare
+     *
      * @return bool true if this log level includes the given log level, false otherwise
      */
     public function includes(self $level): bool;
@@ -74,7 +90,8 @@ interface LogLevel
     /**
      * Checks if this log level is higher than the given log level.
      *
-     * @param LogLevel $level The log level to compare
+     * @param self $level The log level to compare
+     *
      * @return bool true if this log level is higher than the given log level, false otherwise
      */
     public function higherThan(self $level): bool;
@@ -82,7 +99,8 @@ interface LogLevel
     /**
      * Checks if this log level is lower than the given log level.
      *
-     * @param LogLevel $level The log level to compare
+     * @param self $level The log level to compare
+     *
      * @return bool true if this log level is lower than the given log level, false otherwise
      */
     public function lowerThan(self $level): bool;

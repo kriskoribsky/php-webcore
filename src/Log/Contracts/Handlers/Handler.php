@@ -1,5 +1,14 @@
 <?php declare(strict_types=1);
 
+/*
+ * This file is part of the Webcore package.
+ *
+ * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WebCore\Log\Contracts\Handlers;
 
 use WebCore\Log\Contracts\LogLevel;
@@ -14,7 +23,9 @@ interface Handler
      * Sets minimum logging level at which this handler will be triggered.
      *
      * @param mixed $level the logging level to set
+     *
      * @return self Returns the handler instance for method chaining
+     *
      * @throws \WebCore\Log\Exceptions\InvalidArgumentException if the level is invalid or not supported
      */
     public function setLevel(mixed $level): self;
@@ -33,6 +44,7 @@ interface Handler
      * Handlers should still check the record levels within handle().
      *
      * @param LogRecord $record the log record to check
+     *
      * @return bool true if the handler can handle the log record, false otherwise
      */
     public function handlesLevel(LogRecord $record): bool;
@@ -44,14 +56,16 @@ interface Handler
      * those records which are below handler's logging level.
      *
      * @param LogRecord $record the record to handle
+     *
      * @return bool true if the record was handled successfully, false otherwise
      */
     public function handle(LogRecord $record): bool;
 
     /**
      * Handles a set of records at once.
-
+     *
      * @param LogRecord $records records to handle
+     *
      * @return bool true if all records were handled successfully, false otherwise
      */
     public function handleBatch(LogRecord ...$records): bool;

@@ -1,18 +1,32 @@
 <?php declare(strict_types=1);
 
+/*
+ * This file is part of the Webcore package.
+ *
+ * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WebCore\Log\Tests;
 
-use WebCore\Log\Implementations\Logger;
-use WebCore\Log\Contracts\Handlers\Handler;
-
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\TestCase;
+use WebCore\Log\Contracts\Handlers\Handler;
+use WebCore\Log\Implementations\Logger;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ *
+ * @small
+ */
 #[CoversClass(Logger::class)]
 #[UsesClass(Handler::class)]
-class TestLogger extends TestCase
+final class TestLogger extends TestCase
 {
     public function testGetChannel(): void
     {
@@ -34,7 +48,7 @@ class TestLogger extends TestCase
 
         $this->assertSame($firstChannel, $first->getChannel());
         $this->assertSame($secondChannel, $second->getChannel());
-        $this->assertNotEquals($first, $second);
+        $this->assertNotSame($first, $second);
         $this->assertSame($handler, $second->popHandler());
     }
 }
