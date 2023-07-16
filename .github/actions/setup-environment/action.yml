@@ -1,0 +1,30 @@
+name: Setup environment
+description: "Sets up the PHP environment for jobs during CI workflow"
+
+inputs:
+  php-version:
+    description: "Version of PHP install"
+    required: false
+    default: 8.2
+
+  coverage:
+    description: "Code coverage driver to use with PHP setup"
+    required: false
+    default: none
+
+runs:
+  using: composite
+  steps:
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ inputs.php-version }}
+        coverage: ${{ inputs.coverage }}
+
+    - name: Validate composer.json
+      run: composer validate --strict --ansi
+
+    - name: Install composer packages
+      uses: ramsey/composer-install@2.2.0
+      with:
+        composer-options: "--prefer-stable --prefer-dist --no-interaction --no-progress --ansi"

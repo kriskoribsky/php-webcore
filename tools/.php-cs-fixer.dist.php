@@ -9,9 +9,7 @@
  * file that was distributed with this source code.
  */
 
-$dirRoot = \realpath(__DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR);
-$dirSrc = $dirRoot . \DIRECTORY_SEPARATOR . 'src';
-$dirCache = $dirRoot . \DIRECTORY_SEPARATOR . 'out' . \DIRECTORY_SEPARATOR . 'formatters' . \DIRECTORY_SEPARATOR . '.php-cs-fixer.cache';
+require_once 'path-config.php';
 
 $header = <<<'EOF'
     This file is part of the Webcore package.

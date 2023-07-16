@@ -5,3 +5,5 @@
 !/tools/phpunit.xml.dist
 !/tools/phpstan.neon.dist
 !/tools/.php-cs-fixer.dist.php
+!/tools/monorepo-builder.php
+!/tools/path-config.php
