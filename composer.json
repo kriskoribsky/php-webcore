@@ -34,6 +34,13 @@
         "slam/phpstan-extensions": "^6.0",
         "symplify/monorepo-builder": "11.2.3.72"
     },
+    "replace": {
+        "ksoft/http": "self.version",
+        "ksoft/log": "self.version",
+        "ksoft/uri": "self.version"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Ksoft\\Essentials\\Http\\": "src/Http/",
@@ -47,12 +54,5 @@
         },
         "lock": false,
         "sort-packages": true
-    },
-    "replace": {
-        "ksoft/http": "self.version",
-        "ksoft/log": "self.version",
-        "ksoft/uri": "self.version"
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    }
 }

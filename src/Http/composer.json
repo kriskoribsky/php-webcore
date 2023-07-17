@@ -1,11 +1,11 @@
 {
-  "name": "ksoft/http",
-  "require": {
-    "php": "^8.2"
-  },
-  "autoload": {
-    "psr-4": {
-      "Ksoft\\Essentials\\Http\\": ""
+    "name": "ksoft/http",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ksoft\\Essentials\\Http\\": ""
+        }
     }
-  }
 }

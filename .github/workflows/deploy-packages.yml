@@ -10,39 +10,40 @@ on:
       - completed
 
 jobs:
-  fetch_packages:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
+  # fetch_packages:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out repository
+  #       uses: actions/checkout@v3
 
-      - name: Prepare environment
-        uses: "./.github/actions/setup-environment"
+  #     - name: Prepare environment
+  #       uses: "./.github/actions/setup-environment"
 
-      - id: packages
-        run: echo "::set-output name=matrix::$(vendor/bin/monorepo-builder packages-json)
+  #     - id: packages
+  #       run: echo "::set-output name=matrix::$(vendor/bin/monorepo-builder packages-json)
 
-  split_monorepo:
+  split-monorepo:
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        package: ${{fromJson(needs.provide_packages_json.outputs.matrix)}}
+        package:
+          - local_path:
+            split_repository:
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2
-          coverage: none
 
       - name: Monorepo Split
         uses: danharrin/monorepo-split-github-action@v2.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
-          fail-fast: false
+          package_directory: "src/${{ matrix.package.local_path }}"
+          repository_organization: "ksoft-server-php"
+          repository_name: "${{ matrix.package.split_repository }}"
+          repository_host: github
+          user_name: "kriskoribsky"
+          user_email: "kiko.koribsky@gmail.com"

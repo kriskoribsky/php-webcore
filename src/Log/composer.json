@@ -1,11 +1,11 @@
 {
-  "name": "ksoft/log",
-  "require": {
-    "php": "^8.2"
-  },
-  "autoload": {
-    "psr-4": {
-      "Ksoft\\Essentials\\Log\\": ""
+    "name": "ksoft/log",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ksoft\\Essentials\\Log\\": ""
+        }
     }
-  }
 }

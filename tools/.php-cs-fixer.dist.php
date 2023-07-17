@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once 'path-config.php';
+require_once 'config/path.php';
 
 $header = <<<'EOF'
     This file is part of the Webcore package.

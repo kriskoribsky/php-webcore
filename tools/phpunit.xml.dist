@@ -61,14 +61,14 @@
     </source>
 
     <testsuites>
-        <testsuite name="Webcore Unit">
+        <testsuite name="Unit">
             <directory phpVersion="8.2.7" suffix="Test.php">../src/*/Test/</directory>
         </testsuite>
 
-        <testsuite name="Webcore Integration">
+        <testsuite name="Integration">
         </testsuite>
 
-        <testsuite name="Webcore End-to-end">
+        <testsuite name="End-to-end">
         </testsuite>
     </testsuites>
 

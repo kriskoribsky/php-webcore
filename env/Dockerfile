@@ -4,7 +4,7 @@ WORKDIR /
 
 # Install required dependencies
 RUN apk add --update --no-cache --virtual .build-deps $PHPIZE_DEPS
-RUN apk add --update --no-cache linux-headers make ncurses
+RUN apk add --update --no-cache linux-headers bash make ncurses
 
 # Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer

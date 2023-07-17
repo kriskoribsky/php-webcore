@@ -1,0 +1,35 @@
+name: Read only repository
+
+on:
+  issues:
+    types: opened
+  pull_request_target:
+    types: opened
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  close-issues-and-pull_requests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo Lockdown
+        uses: dessant/repo-lockdown@v3.0.0
+        with:
+          close-issue: true
+          lock-issue: true
+          issue-comment: >
+            Thank you for your contribution! <3
+
+            However, this is readonly repository and thus does not accept issues,
+            see the README for details.
+          skip-closed-issue-comment: true
+          pr-comment: >
+            Thank you for your contribution! <3
+
+            However, this is readonly repository and thus does not accept pull requests,
+            see the README for details.
+          close-pr: true
+          lock-pr: true
+          skip-closed-pr-comment: true

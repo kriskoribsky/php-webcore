@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once 'path-config.php';
+require_once 'config/path.php';
 
 use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\AddTagToChangelogReleaseWorker;
