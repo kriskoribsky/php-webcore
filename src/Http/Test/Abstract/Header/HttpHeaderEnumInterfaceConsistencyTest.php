@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Webcore package.
+ * This file is part of the ksoft-server-php/essentials package.
  *
  * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
  *

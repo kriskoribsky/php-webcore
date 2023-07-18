@@ -10,6 +10,16 @@ DIR_TOOL			:= $(DIR_ROOT)tools/
 DIR_TOOL_BIN		:= $(DIR_TOOL)bin/
 
 # Targets
+update:
+
+
+shell:
+
+
+
+
+
+
 init:
 	$(info $(MSG_INIT))
 	$(DIR_TOOL_BIN)initialize-environment.sh

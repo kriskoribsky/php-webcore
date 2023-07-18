@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Webcore package.
+ * This file is part of the ksoft-server-php/essentials package.
  *
  * (c) Kristian Koribsky <kristian.koribsky@gmail.com>
  *
@@ -9,12 +9,10 @@
  * file that was distributed with this source code.
  */
 
-require_once 'config/path.php';
-
 $header = <<<'EOF'
-    This file is part of the Webcore package.
+    This file is part of the {{GITHUB_ORGANIZATION}}/{{GITHUB_REPOSITORY}} package.
 
-    (c) Kristian Koribsky <kristian.koribsky@gmail.com>
+    (c) {{COPYRIGHT_NAME}} <{{COPYRIGHT_EMAIL}}>
 
     For the full copyright and license information, please view the LICENSE
     file that was distributed with this source code.
@@ -63,7 +61,7 @@ $rules = [
     'no_trailing_comma_in_singleline' => true,
     'non_printable_character' => true,
     'octal_notation' => true,
-    'psr_autoloading' => ['dir' => $dirSrc],
+    'psr_autoloading' => ['dir' => '{{DIR_SRC}}'],
     'single_line_empty_body' => true,
 
     // Casing
@@ -350,7 +348,6 @@ $customRules = [
     PhpCsFixerCustomFixers\Fixer\CommentSurroundedBySpacesFixer::name() => true,
     PhpCsFixerCustomFixers\Fixer\CommentedOutFunctionFixer::name() => true,
     PhpCsFixerCustomFixers\Fixer\ConstructorEmptyBracesFixer::name() => true,
-    PhpCsFixerCustomFixers\Fixer\DataProviderReturnTypeFixer::name() => true,
     PhpCsFixerCustomFixers\Fixer\DeclareAfterOpeningTagFixer::name() => true,
     PhpCsFixerCustomFixers\Fixer\EmptyFunctionBodyFixer::name() => true,
     PhpCsFixerCustomFixers\Fixer\IssetToArrayKeyExistsFixer::name() => true,
@@ -396,14 +393,15 @@ $customRules = [
 $finder = PhpCsFixer\Finder::create()
     ->files()
     ->name('*.php')
-    ->in($dirSrc)
+    ->in('{{DIR_SRC}}')
+    ->append(['{{CONFIG_CSFIXER_DIST}}'])
     ->append([__FILE__])
 ;
 
 $config = (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setUsingCache(true)
-    ->setCacheFile($dirCache)
+    ->setCacheFile('{{CACHE_OUT_CSFIXER}}')
     ->registerCustomFixers(new PhpCsFixerCustomFixers\Fixers())
     ->setRules(\array_merge($rules, $customRules))
     ->setFinder($finder)

@@ -3,40 +3,51 @@
 source "$(dirname "$0")/../utils/strict.sh"
 source "$(dirname "$0")/../utils/path.sh"
 
-# Source guard
 if [[ ${SOURCED_CONFIG:-} -ne 1 ]]; then
     readonly SOURCED_CONFIG=1
 
-    # Paths
-    readonly DIR_ROOT=$(path_absolute '../../')
-
-    readonly DIR_BIN=$(path_join "$DIR_ROOT" 'vendor' 'bin')
-    readonly DIR_SRC=$(path_join "$DIR_ROOT" 'src')
-    readonly DIR_ENV=$(path_join "$DIR_ROOT" 'env')
-
-    readonly DIR_TOOL=$(path_join "$DIR_ROOT" 'tools')
-    readonly DIR_TOOL_BIN=$(path_join "$DIR_TOOL" 'bin')
-
-    readonly DIR_OUT=$(path_join "$DIR_ROOT" 'tools-out')
-    readonly DIR_OUT_STATIC=$(path_join "$DIR_OUT" 'static')
-    readonly DIR_OUT_FORMAT=$(path_join "$DIR_OUT" 'format')
-    readonly DIR_OUT_TEST=$(path_join "$DIR_OUT" 'test')
-
-    # Tools
-    readonly CONFIG_PHPUNIT_DEFAULT=$(path_join "$DIR_TOOL" 'phpunit.xml.dist')
-    readonly CONFIG_PHPSTAN_DEFAULT=$(path_join "$DIR_TOOL" 'phpstan.neon.dist')
-    readonly CONFIG_CSFIXER_DEFAULT=$(path_join "$DIR_TOOL" '.php-cs-fixer.dist.php')
-
-    readonly CONFIG_PHPUNIT=$(path_join "$DIR_TOOL" 'phpunit.xml')
-    readonly CONFIG_PHPSTAN=$(path_join "$DIR_TOOL" 'phpstan.neon')
-    readonly CONFIG_CSFIXER=$(path_join "$DIR_TOOL" '.php-cs-fixer.php')
+    # Copyright
+    export COPYRIGHT_NAME='Kristian Koribsky'
+    export COPYRIGHT_EMAIL='kristian.koribsky@gmail.com'
 
     # Github
-    readonly GITHUB_ORGANIZATION='ksoft-server-php'
-    readonly GITHUB_REPOSITORY='essentials'
+    export GITHUB_ORGANIZATION='ksoft-server-php'
+    export GITHUB_REPOSITORY='essentials'
+
+    # Paths
+    export DIR_ROOT=$(path_absolute '../../')
+
+    export DIR_BIN=$(path_join "$DIR_ROOT" 'vendor' 'bin')
+    export DIR_SRC=$(path_join "$DIR_ROOT" 'src')
+    export DIR_ENV=$(path_join "$DIR_ROOT" 'env')
+
+    export DIR_TOOL=$(path_join "$DIR_ROOT" 'tools')
+    export DIR_TOOL_BIN=$(path_join "$DIR_TOOL" 'bin')
+
+    export DIR_OUT=$(path_join "$DIR_ROOT" 'tools-out')
+    export DIR_OUT_STATIC=$(path_join "$DIR_OUT" 'static')
+    export DIR_OUT_FORMAT=$(path_join "$DIR_OUT" 'format')
+    export DIR_OUT_TEST=$(path_join "$DIR_OUT" 'test')
+
+    # Tools
+    export CONFIG_PHPUNIT_DIST=$(path_join "$DIR_TOOL" 'phpunit.xml.dist')
+    export CONFIG_PHPSTAN_DIST=$(path_join "$DIR_TOOL" 'phpstan.neon.dist')
+    export CONFIG_CSFIXER_DIST=$(path_join "$DIR_TOOL" 'phpcs.php.dist')
+
+    export CONFIG_PHPUNIT=$(path_join "$DIR_TOOL" 'phpunit.xml')
+    export CONFIG_PHPSTAN=$(path_join "$DIR_TOOL" 'phpstan.neon')
+    export CONFIG_CSFIXER=$(path_join "$DIR_TOOL" 'phpcs.php')
+
+    export CONFIG_OUT_PHPUNIT=$(path_join "$DIR_OUT_TEST" 'phpunit.parsed.xml')
+    export CONFIG_OUT_PHPSTAN=$(path_join "$DIR_OUT_STATIC" 'phpstan.parsed.neon')
+    export CONFIG_OUT_CSFIXER=$(path_join "$DIR_OUT_FORMAT" 'phpcs.parsed.php')
+
+    export CONFIG_OUT_CSFIXER_HOST=$(path_join "$DIR_OUT_FORMAT" 'phpcs.host.php')
+
+    export CACHE_OUT_CSFIXER=$(path_join "$DIR_OUT_FORMAT" 'phpcs.cache')
 
     # Docker
-    readonly DOCKER_CONTEXT="$DIR_ENV"
-    readonly DOCKER_VOLUME='/volume'
-    readonly DOCKER_IMAGE="$GITHUB_ORGANIZATION-$GITHUB_REPOSITORY"
+    export CONTAINER_CONTEXT="$DIR_ENV"
+    export CONTAINER_VOLUME='/volume'
+    export CONTAINER_IMAGE="$GITHUB_ORGANIZATION-$GITHUB_REPOSITORY"
 fi

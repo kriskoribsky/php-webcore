@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 source "$(dirname "$0")/../utils/strict.sh"
+
 source "$(dirname "$0")/../config/config.sh"
 
 read -p "Package name: " package_name

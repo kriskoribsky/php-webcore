@@ -1,4 +1,4 @@
-# Use the CLI image as the php will be executed only trough command-line
+# Use the CLI image for lightweight build
 FROM php:8.2-cli-alpine
 WORKDIR /
 
@@ -18,7 +18,3 @@ RUN docker-php-ext-configure pcntl --enable-pcntl \
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
-
-# Setup filesystem
-WORKDIR /volume
-VOLUME /volume

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Source guard
 if [[ ${SOURCED_PATH_UTIL:-} -ne 1 ]]; then
     readonly SOURCED_PATH_UTIL=1
 
@@ -12,11 +11,12 @@ if [[ ${SOURCED_PATH_UTIL:-} -ne 1 ]]; then
         DIRECTORY_SEPARATOR="/"
     fi
 
-    # Path functions
+    # Generate absolute path
     function path_absolute() {
         readlink -f $(dirname "${0}")$DIRECTORY_SEPARATOR$1
     }
 
+    # Generate full path from file segments
     function path_join() {
         local segments=("${@}")
         local result="${segments[0]}"
