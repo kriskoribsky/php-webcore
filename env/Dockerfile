@@ -18,3 +18,5 @@ RUN docker-php-ext-configure pcntl --enable-pcntl \
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
+
+ENTRYPOINT []

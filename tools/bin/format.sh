@@ -4,20 +4,18 @@
 # ================================================================================
 
 source "$(dirname "$0")/../utils/strict.sh"
-source "$(dirname "$0")/../utils/run.sh"
 source "$(dirname "$0")/../utils/parse.sh"
 
 source "$(dirname "$0")/../config/config.sh"
 
+# Update project
+# "$DIR_TOOL_BIN/docker.sh" $COMPOSER_UPDATE_SILENT
+
 # Prepare directories
-run_tool "create-out.sh"
+"$DIR_TOOL_BIN/docker.sh" "\$DIR_TOOL_BIN/create-out.sh"
 
 # Run code formatting tools
-cd "$DIR_ROOT"
-composer normalize --ansi "${@}"
+# "$DIR_TOOL_BIN/docker.sh" cd "$DIR_ROOT" && composer normalize --ansi "${@}"
 
-file_template=$(test -f "$CONFIG_CSFIXER" && echo "$CONFIG_CSFIXER" || echo "$CONFIG_CSFIXER_DIST")
-file_output="$CONFIG_OUT_CSFIXER"
-parse_env "$file_template" "$file_output"
-
-run_bin "php-cs-fixer" fix --config="$file_output" --ansi "${@}"
+# parse_env $(test -f "$CONFIG_CSFIXER" && echo "$CONFIG_CSFIXER" || echo "$CONFIG_CSFIXER_DIST") "$CONFIG_OUT_CSFIXER"
+# "$DIR_BIN/php-cs-fixer" fix --config="$CONFIG_OUT_CSFIXER" --ansi "${@}"

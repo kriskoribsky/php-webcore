@@ -10,7 +10,13 @@ DIR_TOOL			:= $(DIR_ROOT)tools/
 DIR_TOOL_BIN		:= $(DIR_TOOL)bin/
 
 # Targets
+rebuild:
+
+
+
+
 update:
+
 
 
 shell:

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-source "$(dirname "$0")/../utils/strict.sh"
 source "$(dirname "$0")/../utils/path.sh"
 
 if [[ ${SOURCED_CONFIG:-} -ne 1 ]]; then
@@ -50,4 +49,8 @@ if [[ ${SOURCED_CONFIG:-} -ne 1 ]]; then
     export CONTAINER_CONTEXT="$DIR_ENV"
     export CONTAINER_VOLUME='/volume'
     export CONTAINER_IMAGE="$GITHUB_ORGANIZATION-$GITHUB_REPOSITORY"
+
+    # Composer
+    export COMPOSER_UPDATE='composer update --prefer-stable --prefer-dist --no-interaction --ansi'
+    export COMPOSER_UPDATE_SILENT='composer update --prefer-stable --prefer-dist --no-interaction --quiet'
 fi
